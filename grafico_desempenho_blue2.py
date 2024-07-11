@@ -1,8 +1,8 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 24 de junho de 2024.
+# Data: 10 de julho de 2024.
 
-# Objetivo do código: gráfico do desempenho (MSE, MAE ou SNR) ao longo das ocupações de acordo com o janelamento ideal para o método Best Linear Unbiased Estimator (BLUE 2) para a estimação da amplitude.
+# Objetivo do código: gráfico do desempenho (EME, MSE, MAE, SNR E DP) ao longo das ocupações de acordo com o janelamento ideal para o método BLUE 2 para a estimação da amplitude.
 
 """ 
 Organização do Código:
@@ -36,12 +36,12 @@ print("\n-----------------------------------------------------------------------
 # Título do programa.
 
 # A variável titulo_programa armazena o título em negrito.
-titulo_programa = colored("Plote do gráfico do desempenho (MSE, MAE ou SNR) ao longo das ocupações de acordo com o janelamento ideal para o método Best Linear Unbiased Estimator (BLUE 2):\n", attrs=["bold"])
+titulo_programa = colored("Plote do gráfico do desempenho (EME, MSE, MAE, SNR ou DP) ao longo das ocupações de acordo com o janelamento ideal para o método BLUE 2:\n", attrs=["bold"])
 
 # Impressão do título do programa.
 print(titulo_programa)
 
-### ------------------------- 1) FUNÇÃO PARA A LEITURA DOS DADOS ESTATÍSTICOS DO DESEMPENHO DO MÉTODO BLUE 2 ----------------------------------- ###
+### ---------------------------- 1) FUNÇÃO PARA A LEITURA DOS DADOS ESTATÍSTICOS DO DESEMPENHO DO MÉTODO BLUE 2 -------------------------------- ###
 
 # Definição da função para a leitura dos dados estatísticos do desempenho do método BLUE 2.
 def leitura_dados_estatisticos_desempenho_BLUE2(parametro, n_janelamento_ideal, opcao_avaliacao_desempenho):
@@ -50,7 +50,7 @@ def leitura_dados_estatisticos_desempenho_BLUE2(parametro, n_janelamento_ideal, 
     pasta_dados_estatisticos_desempenho = f"K_Fold_{parametro}_{opcao_avaliacao_desempenho}_Desempenho_BLUE2_OC"
 
     # Nome do arquivo de entrada dos dados estatísticos do desempenho de acordo com o janelamento ideal.
-    arquivo_dados_estatisticos_desempenho = f"k_fold_{parametro}_{opcao_avaliacao_desempenho}_desempenho_blue2_J_{n_janelamento_ideal}.txt"
+    arquivo_dados_estatisticos_desempenho = f"k_fold_{parametro}_{opcao_avaliacao_desempenho}_desempenho_BLUE2_J_{n_janelamento_ideal}.txt"
 
     # O caminho para esse arquivo de entrada.
     caminho_arquivo_dados_estatisticos_desempenho = os.path.join(pasta_dados_estatisticos_desempenho, arquivo_dados_estatisticos_desempenho)
@@ -111,20 +111,32 @@ def grafico_dado_estatistico_desempenho_BLUE2(opcao_avaliacao_desempenho, Matriz
     # Caso a variável opcao_avalicao_desempenho seja 1.
     if opcao_avaliacao_desempenho == 1:
               
+        # Comando para o nome do eixo das ordenadas de acordo com o erro médio de estimação.
+        plt.ylabel(r"Média do erro médio de estimação (ADC Count)", fontsize = 18)
+    
+    # Caso a variável opcao_avalicao_desempenho seja 2.
+    if opcao_avaliacao_desempenho == 2:
+              
         # Comando para o nome do eixo das ordenadas de acordo com o erro médio quadrático.
         plt.ylabel(r"Média do erro médio quadrático (ADC Count)^2", fontsize = 18)
               
-    # Caso a variável opcao_avalicao_desempenho seja 2.
-    elif opcao_avaliacao_desempenho == 2:
+    # Caso a variável opcao_avalicao_desempenho seja 3.
+    elif opcao_avaliacao_desempenho == 3:
             
         # Comando para o nome do eixo das ordenadas de acordo com o erro médio absoluto.
         plt.ylabel(r"Média do erro médio absoluto (ADC Count)", fontsize = 18)
         
-    # Caso a variável dado_estatistico seja 3 (desvio padrão).
-    elif opcao_avaliacao_desempenho == 3:
+    # Caso a variável dado_estatistico seja 4.
+    elif opcao_avaliacao_desempenho == 4:
         
         # Comando para o nome do eixo das ordenadas de acordo com a relação Sinal-Ruído (Signal-to-Noise Ratio - SNR).
         plt.ylabel(r"Média da relação Sinal-Ruído", fontsize = 18)
+        
+    # Caso a variável dado_estatistico seja 5.
+    elif opcao_avaliacao_desempenho == 5:
+        
+        # Comando para o nome do eixo das ordenadas de acordo com a média do desvio padrão.
+        plt.ylabel(r"Média do desvio padrão (ADC Count)", fontsize = 18)
         
     # Comando que define o tamanho dos números do eixo das ordenadas.
     plt.yticks(fontsize = 16)
@@ -146,33 +158,45 @@ def grafico_dado_estatistico_desempenho_BLUE2(opcao_avaliacao_desempenho, Matriz
 def principal_grafico_dado_estatistico_desempenho_BLUE2():
     
     # Impressão de mensagem no terminal.
-    print("Opções de análise:\nErro Médio Quadrático (Mean Squared Error - MSE): 1\nErro Médio Absoluto (Mean Absolute Error - MAE): 2\nRelação Sinal-Ruído (Signal-to-Noise Ratio - SNR): 3\n")
-
+    print("Opções de avaliações de desempenho do método:\nErro Médio Estimação (EME) - 1\nErro Médio Quadrático (Mean Squared Error - MSE) - 2\nErro Médio Absoluto (Mean Absolute Erro - MAE) - 3\nRelação Sinal-Ruído (Signal-to-Noise Ratio - SNR) - 4\nDesvio Padrão (DP) - 5")
+    
     # A variável opcao_avalicao_desempenho armazena o número do tipo inteiro digitado pelo usuário via terminal.
     opcao_avaliacao_desempenho = int(input("Digite o número da opção desejada: "))
 
-    # A variável valores_dados é uma lista com os valores aceitáveis para opcao_avalicao_desempenho.
-    valores_avaliacoes_desempenho = list(range(1,4,1))
+    # A variável valores_dados é uma lista com os valores aceitáveis para opcao_avaliacao_desempenho.
+    valores_avaliacoes_desempenho = list(range(1,6,1))
     
     # Caso a variável opcao_avaliacao_desempenho seja igual a 1.
     if opcao_avaliacao_desempenho == 1:
             
+        # A variável mecanismo_desempenho recebe a string "EME".
+        mecanismo_desempenho = "EME"
+    
+    # Caso a variável opcao_avaliacao_desempenho seja igual a 2.
+    if opcao_avaliacao_desempenho == 2:
+            
         # A variável mecanismo_desempenho recebe a string "MSE".
         mecanismo_desempenho = "MSE"
             
-    # Caso a variável opcao_avaliacao_desempenho seja igual a 2.
-    elif opcao_avaliacao_desempenho == 2:
+    # Caso a variável opcao_avaliacao_desempenho seja igual a 3.
+    elif opcao_avaliacao_desempenho == 3:
           
         # A variável mecanismo_desempenho recebe a string "MAE".  
         mecanismo_desempenho = "MAE"    
             
-    # Caso a variável opcao_avaliacao_desempenho seja igual a 3.
-    elif opcao_avaliacao_desempenho == 3:
+    # Caso a variável opcao_avaliacao_desempenho seja igual a 4.
+    elif opcao_avaliacao_desempenho == 4:
            
         # A variável mecanismo_desempenho recebe a string "SNR".
         mecanismo_desempenho = "SNR"  
+        
+    # Caso a variável opcao_avaliacao_desempenho seja igual a 5.
+    elif opcao_avaliacao_desempenho == 5:
+           
+        # A variável mecanismo_desempenho recebe a string "DP".
+        mecanismo_desempenho = "DP"
 
-    # Caso o valor digitado armazenado na variável pcao_avaliacao_desempenho não estiver presente na lista valores_avaliacoes_desempenho.
+    # Caso o valor digitado armazenado na variável opcao_avaliacao_desempenho não estiver presente na lista valores_avaliacoes_desempenho.
     if opcao_avaliacao_desempenho not in valores_avaliacoes_desempenho:
     
         # Exibição de uma mensagem de alerta de que a opção solicitada é inválida.
@@ -184,7 +208,7 @@ def principal_grafico_dado_estatistico_desempenho_BLUE2():
     # A variável parametro recebe a string "amplitude".
     parametro = "amplitude"
     
-    # A variável n_janelamento_ideal recebe o valor do janelamento ideal do método BLUE 2.
+    # A variável n_janelamento_ideal recebe o valor do janelamento ideal do método BLUE2.
     # Obs.: essa análise deve ser realizada previamento pela interpretação dos gráficos gerados pelo K-Fold (grafico_k_fold_blue2).
     n_janelamento_ideal = 15
         
@@ -192,6 +216,8 @@ def principal_grafico_dado_estatistico_desempenho_BLUE2():
     
     Matriz_Dados_Desempenho = leitura_dados_estatisticos_desempenho_BLUE2(parametro, n_janelamento_ideal, mecanismo_desempenho)
     grafico_dado_estatistico_desempenho_BLUE2(opcao_avaliacao_desempenho, Matriz_Dados_Desempenho)
+
+### -------------------------------------------------------------------------------------------------------------------------------------------- ###
     
 # Chamada da função principal do código.
 principal_grafico_dado_estatistico_desempenho_BLUE2()

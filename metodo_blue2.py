@@ -26,8 +26,8 @@ Saída: lista com o erro de estimação pelo método BLUE 2 para a amplitude.
 import numpy as np
 
 # Importação dos arquivos.
-from leitura_dados_ocupacao_blue2 import *
-from leitura_dados_ruidos_blue2 import *
+from leitura_dados_ocupacao_BLUE2 import *
+from leitura_dados_ruidos_BLUE2 import *
 
 ### ------------------------------------------------- 1) FUNÇÃO PARA O PULSO DE REFERÊNCIA ----------------------------------------------------- ###
 

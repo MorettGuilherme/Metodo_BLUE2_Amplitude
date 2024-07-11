@@ -146,7 +146,7 @@ def grafico_dado_estatistico_janelamento(dado_estatistico, Matriz_Dados_Estatist
 ### ---------------------------------------------------- 3) FUNÇÃO PRINCIPAL DO CÓDIGO (MAIN) -------------------------------------------------- ###
 
 # Definição da função principal (main) para esse código.
-def principal_grafico_dado_estatistico_janelamento_blue2():
+def principal_grafico_dado_estatistico_janelamento_BLUE2():
     
     # Impressão de mensagem no terminal.
     print("Opções de análise:\nMédia: 1\nVariância: 2\nDesvio padrão: 3\n")
@@ -190,7 +190,7 @@ def principal_grafico_dado_estatistico_janelamento_blue2():
     grafico_dado_estatistico_janelamento(dado_estatistico, Matriz_Dados_Estatisticos_Janelamento)
     
 # Chamada da função principal do código.
-principal_grafico_dado_estatistico_janelamento_blue2()
+principal_grafico_dado_estatistico_janelamento_BLUE2()
 
 # Impressão de uma linha que representa o fim do programa.
 print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")

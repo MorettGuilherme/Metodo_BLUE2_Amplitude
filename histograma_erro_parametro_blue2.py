@@ -1,6 +1,6 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 10 de junho de 2024.
+# Data: 10 de julho de 2024.
 
 # Objetivo do código: análise do erro de estimação do parâmetro da amplitude pelo método Best Linear Unbiased Estimator (BLUE 2).
 
@@ -8,9 +8,7 @@
 Organização do Código:
 
 Importação de arquivos.
-Leitura dos dados de ocupação: leitura_dados_ocupacao_blue2.py
-Leitura dos dados de ruídos: leitura_dados_ruidos_blue2.py
-Método: metodo_blue2.py
+Método: metodo_BLUE2.py
 
 Funções presentes:
 
@@ -35,9 +33,7 @@ import os
 from termcolor import colored
 
 # Importação dos arquivos.
-from leitura_dados_ocupacao_blue2 import *
-from leitura_dados_ruidos_blue2 import *
-from metodo_blue2 import *
+from metodo_BLUE2 import *
 
 # Impressão de uma linha que representa o início do programa.
 print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")
