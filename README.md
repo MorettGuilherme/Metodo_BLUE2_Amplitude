@@ -51,7 +51,7 @@ As pastas e os arquivos presentes nesse repositório são:
    * Instrução da validação cruzada K-Fold adaptada para o cálculo do desempenho do método BLUE 2.
    * Instrução principal do código.
 
-14. arquivo arquivo_saida_k_fold_BLUE2.py
+14. arquivo_saida_k_fold_BLUE2.py
    * Instrução para salvar em arquivos os dados estatísticos pela validação cruzada k-Fold.
    * Instrução da validação cruzada K-Fold.
    * Instrução principal do código.
@@ -60,22 +60,22 @@ As pastas e os arquivos presentes nesse repositório são:
   * Função para a leitura dos dados estatísticos de todas as ocupações para um determinado janelamento.
   * Instrução para o plote do gráfico do dado estatístico ao longo das ocupações para um determinado janelamento.
   * Instrução principal do código.
+
+16. grafico_desempenho_BLUE2.py
+  * Função para a leitura dos dados do desempenho do método BLUE 2 de todas as ocupações para o janelamento ideal.
+  * Instrução para o plote do gráfico do desempenho do método BLUE 2 ao longo das ocupações para o janelamento ideal.
+  * Instrução principal do código.
   
-16. grafico_k_fold_BLUE2.py
+17. grafico_k_fold_BLUE2.py
   * Função para a leitura dos dados estatísticos da validação cruzada K-Fold.
   * Instrução para a construção do gráfico tipo A da validação cruzada K-Fold.
   * Instrução para a construção do gráfico tipo B da validação cruzada K-Fold.
-  * Instrução principal (main) do código.
+  * Instrução principal do código.
   
-17. histograma_erro_parametro_BLUE2.py
+18. histograma_erro_parametro_BLUE2.py
   * Função para o cálculo da estatística do erro de estimação da amplitude.
   * Função para o plote do histograma do erro de estimação da amplitude.
   * Função principal.
-
-18. k_fold_BLUE2.py
-  * Instrução para salvar em arquivos os dados estatísticos pela validação cruzada k-Fold.
-  * Instrução da validação cruzada K-Fold.
-  * Instrução principal do código.
 
 19. leitura_dados_ocupacao_BLUE2.py
   * Função para a leitura dos dados de ocupação.
