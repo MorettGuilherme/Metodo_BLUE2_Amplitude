@@ -1,16 +1,14 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude central.
 # Autor: Guilherme Barroso Morett.
-# Data: 10 de junho 2024.
+# Data: 16 de julho 2024.
 
-# Objetivo do código: geração de arquivos de saída baseados nos dados estatísticos dos histogramas do erro de estimação da amplitude pelo método Best Linear Unbiased Estimator (BLUE 2).
+# Objetivo do código: geração de arquivos de saída baseados nos dados estatísticos dos histogramas do erro de estimação da amplitude central pelo método Best Linear Unbiased Estimator (BLUE 2).
 
 """ 
 Organização do Código:
 
 Importação de arquivos.
-Leitura dos dados de ocupação: leitura_dados_ocupacao.py
-Leitura dos dados de ruídos: leitura_dados_ruidos_blue2.py
-Método: metodo_blue2.py
+Método: metodo_BLUE2.py
 
 Funções presentes:
 
@@ -37,9 +35,7 @@ import time
 from tqdm import tqdm
 
 # Importação dos arquivos.
-from leitura_dados_ocupacao_blue2 import *
-from leitura_dados_ruidos_blue2 import *
-from metodo_blue2 import * 
+from metodo_BLUE2 import * 
 
 # Impressão de uma linha que representa o início do programa.
 print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")
@@ -47,7 +43,7 @@ print("\n-----------------------------------------------------------------------
 # Título do programa.
 
 # A variável titulo_programa armazena o título em negrito.
-titulo_programa = colored("Geração de arquivos de saída baseados nos dados estatísticos dos histogramas do erro de estimação da amplitude pelo método Best Linear Unbiased Estimator (BLUE 2):\n", attrs=["bold"])
+titulo_programa = colored("Geração de arquivos de saída baseados nos dados estatísticos dos histogramas do erro de estimação da amplitude central pelo método Best Linear Unbiased Estimator (BLUE 2):\n", attrs=["bold"])
 
 # Impressão do título do programa.
 print(titulo_programa)
@@ -55,7 +51,7 @@ print(titulo_programa)
 ### ------------------------ 1) FUNÇÃO PARA O CÁLCULO DOS DADOS ESTATÍSTICOS DO ERRO DE ESTIMAÇÃO DA AMPLITUDE --------------------------------- ###
 
 # Definição da função para o cálculo dos dados estatísticos do erro de estimação da amplitude.
-def dados_estatisticos_erro_amplitude(lista_erro_amplitude):
+def dados_estatisticos_erro_estimacao_amplitude_BLUE2(lista_erro_amplitude):
     
     # A lista do erro da amplitude é convertida para o tipo numpy array.
     vetor_erro_amplitude = np.array(lista_erro_amplitude)
@@ -77,7 +73,7 @@ def dados_estatisticos_erro_amplitude(lista_erro_amplitude):
 ### ----------------------- 2) FUNÇÃO PARA A IMPRESSÃO DOS DADOS ESTATÍSTICOS DO ERRO DE ESTIMAÇÃO DA AMPLITUDE -------------------------------- ###
 
 # Definição da função para a impressão em um arquivo de saída, os dados estatísticos do erro da amplitude.
-def arquivo_saida_dados_estatisticos_erro_amplitude(parametro, n_ocupacao, n_janelamento, media_erro_amplitude, var_erro_amplitude, desvio_padrao_erro_amplitude):
+def arquivo_saida_dados_estatisticos_erro_estimacao_amplitude_BLUE2(parametro, n_ocupacao, n_janelamento, media_erro_amplitude, var_erro_amplitude, desvio_padrao_erro_amplitude):
 
     # Definição do título presente no arquivo de saída.
     titulo_arquivo_saida = "Oc,media_erro,var_erro,desvio_padrao_erro\n"
@@ -126,7 +122,7 @@ def arquivo_saida_dados_estatisticos_erro_amplitude(parametro, n_ocupacao, n_jan
 ### ---------------------------------------- 3) FUNÇÃO PRINCIPAL DO CÓDIGO (MAIN) -------------------------------------------------------------- ###
 
 # Definição da função principal (main) para esse código.
-def principal_arquivo_saida_dados_estatisticos_blue2():
+def principal_arquivo_saida_dados_estatisticos_BLUE2():
     
     # A variável ocupacao_inicial armazena o valor inicial da ocupação que é 0.
     ocupacao_inicial = 0
@@ -161,26 +157,20 @@ def principal_arquivo_saida_dados_estatisticos_blue2():
     
             vetor_amostras_pulsos, vetor_amplitude_referencia, _ = amostras_pulsos_e_referencia(Matriz_Dados_OC)
             
-            Matriz_dados_pulsos, vetor_amplitude_referencia = amostras_janelamento(vetor_amostras_pulsos, vetor_amplitude_referencia, n_janelamento)
+            Matriz_Pulsos_Sinais, vetor_amplitude_referencia = amostras_janelamento(vetor_amostras_pulsos, vetor_amplitude_referencia, n_janelamento)
             
-            Matriz_dados_pulsos_treino, Matriz_dados_pulsos_teste, vetor_amplitude_referencia_treino, vetor_amplitude_referencia_teste = dados_treino_teste_histograma(Matriz_dados_pulsos, vetor_amplitude_referencia)
-            
-            vetor_dados_ruidos = leitura_dados_ruidos(n_ocupacao)
-            
-            Matriz_dados_ruidos = amostras_ruidos_janelamento(vetor_dados_ruidos, n_janelamento) 
-            
-            Matriz_covariancia = matriz_covariancia(Matriz_dados_ruidos)
+            Matriz_Pulsos_Sinais_Treino, Matriz_Pulsos_Sinais_Teste, vetor_amplitude_referencia_treino, vetor_amplitude_referencia_teste = dados_treino_teste_histograma(Matriz_Pulsos_Sinais, vetor_amplitude_referencia)
     
-            lista_erro_amplitude = metodo_BLUE2(Matriz_dados_pulsos_teste, vetor_amplitude_referencia_teste, Matriz_covariancia, n_janelamento)
+            lista_erro_estimacao_amplitude = metodo_BLUE2(Matriz_Pulsos_Sinais_Treino, Matriz_Pulsos_Sinais_Teste, vetor_amplitude_referencia_teste, n_janelamento)
             
-            media_erro_amplitude, var_erro_amplitude, desvio_padrao_erro_amplitude = dados_estatisticos_erro_amplitude(lista_erro_amplitude)
+            media_erro_estimacao_amplitude, var_erro_estimacao_amplitude, desvio_padrao_erro_estimacao_amplitude = dados_estatisticos_erro_estimacao_amplitude_BLUE2(lista_erro_estimacao_amplitude)
     
-            arquivo_saida_dados_estatisticos_erro_amplitude(parametro, n_ocupacao, n_janelamento, media_erro_amplitude, var_erro_amplitude, desvio_padrao_erro_amplitude)
+            arquivo_saida_dados_estatisticos_erro_estimacao_amplitude_BLUE2(parametro, n_ocupacao, n_janelamento, media_erro_estimacao_amplitude, var_erro_estimacao_amplitude, desvio_padrao_erro_estimacao_amplitude)
             
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###
 
 # Chamada da função principal do código.
-principal_arquivo_saida_dados_estatisticos_blue2()
+principal_arquivo_saida_dados_estatisticos_BLUE2()
 
 # Impressão de uma linha que representa o fim do programa.
 print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")

@@ -1,14 +1,14 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude central.
 # Autor: Guilherme Barroso Morett.
-# Data: 10 de julho de 2024.
+# Data: 16 de julho de 2024.
 
-# Objetivo do código: cálculo do desempenho do método Best Linear Unbiased Estimator (BLUE 2) para a estimação da amplitude pela validação cruzada K-Fold.
+# Objetivo do código: cálculo do desempenho do método Best Linear Unbiased Estimator (BLUE 2) para a estimação da amplitude central pela validação cruzada K-Fold.
 
 """ 
 Organização do código:
 
 Importação de arquivos.
-Método BLUE 2 formatado para o cálculo do termo da amplitude: metodo_BLUE2.py
+Método BLUE 2 para o cálculo do termo da amplitude central: metodo_BLUE2.py
 
 Funções presentes:
 
@@ -61,7 +61,7 @@ print("\n-----------------------------------------------------------------------
 # Título do programa.
 
 # A variável titulo_programa armazena o título em negrito.
-titulo_programa = colored("Geração de arquivos de saída pela técnica de validação cruzada K-Fold para a estimação da amplitude pelo método Best Linear Unbiased Estimator (BLUE 2):\n", attrs=["bold"])
+titulo_programa = colored("Geração de arquivos de saída pela técnica de validação cruzada K-Fold para a estimação da amplitude central pelo método Best Linear Unbiased Estimator (BLUE 2):\n", attrs=["bold"])
 
 # Impressão do título do programa.
 print(titulo_programa)
@@ -198,7 +198,7 @@ def DP(numero_elementos_bloco, bloco_erro_estimacao):
 ### ----------- 7) INSTRUÇÃO PARA A VALIDAÇÃO CRUZADA K-FOLD ADAPTADA PARA O CÁLCULO DO DESEMPENHO DO MÉTODO BLUE 2 ---------------------------- ###
 
 # Definição da instrução da técnica de validação cruzada K-Fold para o cálculo do desempenho do método BLUE 2 para a estimação da amplitude.
-def K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_avaliacao_desempenho, Matriz_Pulsos_Sinais, vetor_amplitude_referencia, Matriz_Covariancia):
+def K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_avaliacao_desempenho, Matriz_Pulsos_Sinais, vetor_amplitude_referencia):
 
     # Caso a variável opcao_avaliacao_desempenho seja igual a 1.
     if opcao_avaliacao_desempenho == 1:
@@ -280,13 +280,13 @@ def K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_av
         bloco_treino_amplitude_referencia = [elemento for sublista in bloco_treino_amplitude_referencia for elemento in sublista]
         
         # A variável bloco_lista_erro_parametro recebe o valor de retorno da função metodo_BLUE2.
-        bloco_lista_erro_parametro = metodo_BLUE2(bloco_teste_pulsos_sinais, bloco_teste_amplitude_referencia, Matriz_Covariancia, n_janelamento_ideal)
+        bloco_lista_erro_estimacao_parametro = metodo_BLUE2(bloco_treino_pulsos_sinais, bloco_teste_pulsos_sinais, bloco_teste_amplitude_referencia, n_janelamento_ideal)
         
         # Caso a variável opcao_avaliacao_desempenho seja igual a 1.
         if opcao_avaliacao_desempenho == 1:
             
             # A variável bloco_valor_EME recebe o valor de retorno da função EME.
-            bloco_valor_EME = EME(quantidade_elementos_bloco, bloco_lista_erro_parametro)
+            bloco_valor_EME = EME(quantidade_elementos_bloco, bloco_lista_erro_estimacao_parametro)
             # O valor de bloco_valor_EME é acrescentado a lista lista_blocos_valores_desempenho.
             lista_blocos_valores_desempenho.append(bloco_valor_EME)
         
@@ -294,7 +294,7 @@ def K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_av
         elif opcao_avaliacao_desempenho == 2:
             
             # A variável bloco_valor_MSE recebe o valor de retorno da função MSE.
-            bloco_valor_MSE = MSE(quantidade_elementos_bloco, bloco_lista_erro_parametro)
+            bloco_valor_MSE = MSE(quantidade_elementos_bloco, bloco_lista_erro_estimacao_parametro)
             # O valor de bloco_valor_MSE é acrescentado a lista lista_blocos_valores_desempenho.
             lista_blocos_valores_desempenho.append(bloco_valor_MSE)
             
@@ -302,7 +302,7 @@ def K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_av
         elif opcao_avaliacao_desempenho == 3:
             
             # A variável bloco_valor_MAE recebe o valor de retorno da função MAE.
-            bloco_valor_MAE = MAE(quantidade_elementos_bloco, bloco_lista_erro_parametro)
+            bloco_valor_MAE = MAE(quantidade_elementos_bloco, bloco_lista_erro_estimacao_parametro)
             # O valor de bloco_valor_MAE é acrescentado a lista lista_blocos_valores_desempenho.
             lista_blocos_valores_desempenho.append(bloco_valor_MAE)
             
@@ -310,7 +310,7 @@ def K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_av
         elif opcao_avaliacao_desempenho == 4:
            
            # A variável bloco_valor_SNR recebe o valor de retorno da função SNR.
-           bloco_valor_SNR = SNR( bloco_teste_amplitude_referencia, bloco_lista_erro_parametro)
+           bloco_valor_SNR = SNR( bloco_teste_amplitude_referencia, bloco_lista_erro_estimacao_parametro)
            # O valor de bloco_valor_SNR é acrescentado a lista lista_blocos_valores_desempenho.
            lista_blocos_valores_desempenho.append(bloco_valor_SNR)
            
@@ -318,7 +318,7 @@ def K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_av
         elif opcao_avaliacao_desempenho == 5:
             
            # A variável bloco_valor_DP recebe o valor de retorno da função DP.
-           bloco_valor_DP = DP(quantidade_elementos_bloco, bloco_lista_erro_parametro)
+           bloco_valor_DP = DP(quantidade_elementos_bloco, bloco_lista_erro_estimacao_parametro)
            # O valor de bloco_valor_DP é acrescentado a lista lista_blocos_valores_desempenho.
            lista_blocos_valores_desempenho.append(bloco_valor_DP)
             
@@ -384,17 +384,11 @@ def principal_desempenho_BLUE2():
             
         vetor_amostras_pulsos, vetor_amplitude_referencia, vetor_fase_referencia = amostras_pulsos_e_referencia(Matriz_Dados_OC_Sem_Pedestal)
         
-        Matriz_Dados_Pulsos, vetor_amplitude_referencia = amostras_janelamento(vetor_amostras_pulsos, vetor_amplitude_referencia, n_janelamento_ideal)
+        Matriz_Pulsos_Sinais, vetor_amplitude_referencia = amostras_janelamento(vetor_amostras_pulsos, vetor_amplitude_referencia, n_janelamento_ideal)
             
-        Matriz_Dados_Pulsos, vetor_fase_referencia = amostras_janelamento(vetor_amostras_pulsos, vetor_fase_referencia, n_janelamento_ideal)
-
-        vetor_dados_ruidos = leitura_dados_ruidos(n_ocupacao)
+        Matriz_Pulsos_Sinais, vetor_fase_referencia = amostras_janelamento(vetor_amostras_pulsos, vetor_fase_referencia, n_janelamento_ideal)
     
-        Matriz_Dados_Ruidos = amostras_ruidos_janelamento(vetor_dados_ruidos, n_janelamento_ideal)
-    
-        Matriz_Covariancia = matriz_covariancia(Matriz_Dados_Ruidos)
-    
-        K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_avaliacao_desempenho, Matriz_Dados_Pulsos, vetor_amplitude_referencia, Matriz_Covariancia)
+        K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_avaliacao_desempenho, Matriz_Pulsos_Sinais, vetor_amplitude_referencia)
     
     # Definição do tempo final.
     tempo_final = time.time()

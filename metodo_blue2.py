@@ -1,8 +1,8 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude central.
 # Autor: Guilherme Barroso Morett.
-# Data: 01 de junho de 2024.
+# Data: 16 de julho de 2024.
 
-# Objetivo do código: Aplicação do método Best Linear Unbiased Estimator (BLUE 2) para estimar a amplitude.
+# Objetivo do código: aplicação do método Best Linear Unbiased Estimator (BLUE 2) para estimar a amplitude central.
 
 """
 Organização do código:
@@ -18,7 +18,7 @@ Entrada: número de janelamento.
 Saída: vetor pulso de referência para cada instante de tempo de acordo com o janelamento.
 
 2) Função para o método BLUE 1.
-Entrada: matriz com os pulsos de sinais, vetor com a amplitude de referência, matriz de covariância dos dados de ruídos e o número de janelamento.
+Entrada: matriz com os pulsos de sinais da etapa de treino, matriz com os pulsos de sinais da etapa de teste, vetor com a amplitude de referência e o número de janelamento.
 Saída: lista com o erro de estimação pelo método BLUE 2 para a amplitude.
 """
 
@@ -105,18 +105,21 @@ def pulso_referencia(n_janelamento):
 ### ----------------------------------------------- 2) FUNÇÃO PARA O MÉTODO BLUE 2 ------------------------------------------------------------- ###
 
 # Definição da função para o método BLUE 2.
-def metodo_BLUE2(Matriz_pulsos_sinais_teste, vetor_amplitude_referencia_teste, Matriz_covariancia, n_janelamento):
+def metodo_BLUE2(Matriz_Pulsos_Sinais_Treino, Matriz_Pulsos_Sinais_Teste, vetor_amplitude_referencia_teste, n_janelamento):
 
     # Criação da lista vazia para armazenar os erros calculados para a amplitude. 
-    lista_erro_amplitude = []
+    lista_erro_estimacao_amplitude = []
+    
+    # A variável Matriz_Covariancia recebe o valor de retorno da função matriz_covariancia.
+    Matriz_Covariancia = matriz_covariancia(Matriz_Pulsos_Sinais_Treino)
     
     # A variável vetor_h recebe o retorno da função pulso_referencia.
     vetor_h = pulso_referencia(n_janelamento)
          
-    # Tenta calcular a inversa da matriz Matriz_covariancia.
+    # Tenta calcular a inversa da matriz Matriz_Covariancia.
     try:
-    # Cálcula a inversa da matriz Matriz_covariancia usando numpy.linalg.inv.
-        Inversa_Matriz_covariancia = np.linalg.inv(Matriz_covariancia)
+    # Cálcula a inversa da matriz Matriz_Covariancia usando numpy.linalg.inv.
+        Inversa_Matriz_Covariancia = np.linalg.inv(Matriz_Covariancia)
           
     # Caso a matriz Matriz_Covariancia seja singular ou não invertível.  
     except np.linalg.LinAlgError:
@@ -127,16 +130,16 @@ def metodo_BLUE2(Matriz_pulsos_sinais_teste, vetor_amplitude_referencia_teste, M
     transposta_h = np.transpose(vetor_h)
     
     # Cálculo do vetor g1.
-    vetor_g1 = (np.dot(Inversa_Matriz_covariancia, vetor_h))/(np.dot(np.dot(transposta_h, Inversa_Matriz_covariancia), vetor_h))
+    vetor_g1 = (np.dot(Inversa_Matriz_Covariancia, vetor_h))/(np.dot(np.dot(transposta_h, Inversa_Matriz_Covariancia), vetor_h))
     
     # Cálculo da transposta do vetor g1.
     transposta_vetor_g1 = np.transpose(vetor_g1)
     
-    # Para o índice de zero até o número de linhas da matriz Matriz_pulsos_sinais_treino.
-    for indice_linha in range(len(Matriz_pulsos_sinais_teste)):
+    # Para o índice de zero até o número de linhas da matriz Matriz_Pulsos_Sinais_Teste.
+    for indice_linha in range(len(Matriz_Pulsos_Sinais_Teste)):
         
-        # O vetor vetor_pulsos_sinais corresponde a linha de índice indice_linha da matriz Matriz_pulsos_sinais_treino.    
-        vetor_pulsos_sinais_teste = Matriz_pulsos_sinais_teste[indice_linha]
+        # O vetor vetor_pulsos_sinais corresponde a linha de índice indice_linha da matriz Matriz_Pulsos_Sinais_Teste.    
+        vetor_pulsos_sinais_teste = Matriz_Pulsos_Sinais_Teste[indice_linha]
     
         # A amplitude de referência é o elemento de índice indice_linha do vetor vetor_amplitude_referencia_teste.
         valor_amplitude_referencia_teste = vetor_amplitude_referencia_teste[indice_linha]
@@ -145,12 +148,12 @@ def metodo_BLUE2(Matriz_pulsos_sinais_teste, vetor_amplitude_referencia_teste, M
         valor_amplitude_estimada = np.dot(transposta_vetor_g1 , vetor_pulsos_sinais_teste)
         
         # Cálculo do erro de estimação da amplitude.
-        erro_amplitude = valor_amplitude_referencia_teste-valor_amplitude_estimada
+        erro_estimacao_amplitude = valor_amplitude_referencia_teste-valor_amplitude_estimada
     
-        # O elemento erro_amplitude é adicionado na lista correspondente.    
-        lista_erro_amplitude.append(erro_amplitude)
+        # O elemento erro_estimacao_amplitude é adicionado na lista correspondente.    
+        lista_erro_estimacao_amplitude.append(erro_estimacao_amplitude)
 
-    # A função retorna a lista lista_erro_amplitude.
-    return lista_erro_amplitude
+    # A função retorna a lista lista_erro_estimacao_amplitude.
+    return lista_erro_estimacao_amplitude
  
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###

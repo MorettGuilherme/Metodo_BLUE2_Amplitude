@@ -1,8 +1,8 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude central.
 # Autor: Guilherme Barroso Morett.
-# Data: 10 de junho de 2024.
+# Data: 16 de julho de 2024.
 
-# Objetivo do código: gráfico dos dados estatíticos ao longo das ocupações de acordo com o janelamento para o método Best Linear Unbiased Estimator (BLUE 2) para a estimação da amplitude.
+# Objetivo do código: gráfico dos dados estatíticos ao longo das ocupações de acordo com o janelamento para o método Best Linear Unbiased Estimator (BLUE 2) para a estimação da amplitude central.
 
 """ 
 Organização do Código:

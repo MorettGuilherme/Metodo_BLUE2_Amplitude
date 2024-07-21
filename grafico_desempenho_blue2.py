@@ -1,8 +1,8 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude central.
 # Autor: Guilherme Barroso Morett.
-# Data: 10 de julho de 2024.
+# Data: 16 de julho de 2024.
 
-# Objetivo do código: gráfico do desempenho (EME, MSE, MAE, SNR E DP) ao longo das ocupações de acordo com o janelamento ideal para o método BLUE 2 para a estimação da amplitude.
+# Objetivo do código: gráfico do desempenho (EME, MSE, MAE, SNR E DP) ao longo das ocupações de acordo com o janelamento ideal para o método BLUE 2 para a estimação da amplitude central.
 
 """ 
 Organização do Código:
@@ -154,7 +154,7 @@ def grafico_dado_estatistico_desempenho_BLUE2(opcao_avaliacao_desempenho, Matriz
         
 ### ---------------------------------------------------- 3) FUNÇÃO PRINCIPAL DO CÓDIGO (MAIN) -------------------------------------------------- ###
 
-# Definição da função principal (main) para esse código.
+# Definição da função principal (main) do código.
 def principal_grafico_dado_estatistico_desempenho_BLUE2():
     
     # Impressão de mensagem no terminal.

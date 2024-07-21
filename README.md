@@ -41,43 +41,58 @@ As pastas e os arquivos presentes nesse repositório são:
   * Instrução para salvar os dados estatísticos do erro de estimação da amplitude para determinada ocupação em um arquivo de saída.
   * Instrução principal do código.
 
-13. grafico_dado_estatistico_janelamento_BLUE2.py
+13. arquivo_saida_desempenho_BLUE2.py
+   * Instrução para salvar em arquivos os dados estatísticos do desempenho do método BLUE 2.
+   * Função para o cálculo do desempenho do método BLUE 2 pelo Erro Médio de Estimação (EME).
+   * Função para o cálculo do desempenho do método BLUE 2 pelo Erro Médio Quadrático (Mean Squared Error - MSE).
+   * Função para o cálculo do desempenho do método BLUE 2 pelo Erro Médio Absoluto (Mean Absolute Error - MAE).
+   * Função para o cálculo do desempenho do método BLUE 2 pela Relação Sinal-Ruído (Signal-to-Noise Ratio - SNR).
+   * Função para o cálculo do desempenho do método BLUE 2 pelo desvio padrão (DP).
+   * Instrução da validação cruzada K-Fold adaptada para o cálculo do desempenho do método BLUE 2.
+   * Instrução principal do código.
+
+14. arquivo arquivo_saida_k_fold_BLUE2.py
+   * Instrução para salvar em arquivos os dados estatísticos pela validação cruzada k-Fold.
+   * Instrução da validação cruzada K-Fold.
+   * Instrução principal do código.
+
+15. grafico_dado_estatistico_janelamento_BLUE2.py
   * Função para a leitura dos dados estatísticos de todas as ocupações para um determinado janelamento.
   * Instrução para o plote do gráfico do dado estatístico ao longo das ocupações para um determinado janelamento.
   * Instrução principal do código.
   
-14. grafico_k_fold_BLUE2.py
+16. grafico_k_fold_BLUE2.py
   * Função para a leitura dos dados estatísticos da validação cruzada K-Fold.
   * Instrução para a construção do gráfico tipo A da validação cruzada K-Fold.
   * Instrução para a construção do gráfico tipo B da validação cruzada K-Fold.
   * Instrução principal (main) do código.
   
-15. histograma_erro_parametro_BLUE2.py
+17. histograma_erro_parametro_BLUE2.py
   * Função para o cálculo da estatística do erro de estimação da amplitude.
   * Função para o plote do histograma do erro de estimação da amplitude.
   * Função principal.
 
-16. k_fold_BLUE2.py
+18. k_fold_BLUE2.py
   * Instrução para salvar em arquivos os dados estatísticos pela validação cruzada k-Fold.
   * Instrução da validação cruzada K-Fold.
   * Instrução principal do código.
 
-17. leitura_dados_ocupacao_BLUE2.py
+19. leitura_dados_ocupacao_BLUE2.py
   * Função para a leitura dos dados de ocupação.
   * Função para a retirada do pedestal dos pulsos de sinais.
   * Função para a construção da matriz dos pulsos de sinais e o vetor do parâmetro de referência.
   * Função para separação em dados de treino e teste.
 
-18. leitura_dados_ruidos_BLUE2.py
+20. leitura_dados_ruidos_BLUE2.py
   * Função para a leitura dos dados de ruídos de acordo com a ocupação.
   * Função para a organização dos dados de ruídos de acordo com o janelamento.
   * Função para separação em dados de treino e teste.
   * Função para a construção da matriz de covariância.
   * Função para a construção da matriz de covariância como identidade.
 
-19. metodo_BLUE2.py
+21. metodo_BLUE2.py
   * Função para a definição do vetor pulso de referência.
-  * Função para o método BLUE 1.
+  * Função para o método BLUE 2.
 
 IMPORTANTE: os dados das ocupações foram simulados computacionalmente. As características das distribuições são:
 
@@ -88,3 +103,5 @@ IMPORTANTE: os dados das ocupações foram simulados computacionalmente. As cara
 * Número de eventos: 2000000.
 * Fold: 100.
 * Os dados de ruídos para a construção da matriz de covariância foram os mesmo que para os pulsos de sinais.
+
+Obs.: antes da aplicação do método, o valor constante do pedestal foi retirado dos dados referentes aos pulsos de sinais.
