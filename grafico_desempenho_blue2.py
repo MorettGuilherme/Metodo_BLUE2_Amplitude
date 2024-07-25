@@ -1,8 +1,8 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude central.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 16 de julho de 2024.
+# Data: 25 de julho de 2024.
 
-# Objetivo do código: gráfico do desempenho (EME, MSE, MAE, SNR E DP) ao longo das ocupações de acordo com o janelamento ideal para o método BLUE 2 para a estimação da amplitude central.
+# Objetivo do código: gráfico do desempenho (EME, MSE, MAE, SNR E DP) ao longo das ocupações de acordo com o janelamento ideal para o método BLUE2 para a estimação da amplitude.
 
 """ 
 Organização do Código:
@@ -11,11 +11,11 @@ Leitura dos dados estatísticos de todas as ocupações para um determinado jane
 
 Funções presentes:
 
-1) Função para a leitura dos dados do desempenho do método BLUE 2 de todas as ocupações para o janelamento ideal.
+1) Função para a leitura dos dados do desempenho da estimação da amplitude pelo método BLUE2 de todas as ocupações para o janelamento ideal.
 Entrada: parâmetro estimado, número do janelamento ideal, opção de avaliação do desempenho.
 Saída: matriz com os dados de entrada organizados de acordo com a coluna (número da ocupação, média, variância e desvio padrão do desempenho do método BLUE 2).
 
-2) Instrução para o plote do gráfico do desempenho do método BLUE 2 ao longo das ocupações para o janelamento ideal.
+2) Instrução para o plote do gráfico do desempenho da estimação da amplitude pelo método BLUE2 ao longo das ocupações para o janelamento ideal.
 Entrada: matriz dos dados de desempenho do método BLUE 2.
 Saída: nada.
 
@@ -41,10 +41,10 @@ titulo_programa = colored("Plote do gráfico do desempenho (EME, MSE, MAE, SNR o
 # Impressão do título do programa.
 print(titulo_programa)
 
-### ---------------------------- 1) FUNÇÃO PARA A LEITURA DOS DADOS ESTATÍSTICOS DO DESEMPENHO DO MÉTODO BLUE 2 -------------------------------- ###
+### ---------------------------- 1) FUNÇÃO PARA A LEITURA DOS DADOS ESTATÍSTICOS DO DESEMPENHO DA ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE 2 -------------------------------- ###
 
-# Definição da função para a leitura dos dados estatísticos do desempenho do método BLUE 2.
-def leitura_dados_estatisticos_desempenho_BLUE2(parametro, n_janelamento_ideal, opcao_avaliacao_desempenho):
+# Definição da função para a leitura dos dados estatísticos do desempenho da estimação da amplitude pelo método BLUE 2.
+def leitura_dados_estatisticos_desempenho_amplitude_BLUE2(parametro, n_janelamento_ideal, opcao_avaliacao_desempenho):
 
     # Nome da pasta em que se encontra o arquivo de entrada dos dados estatísticos do desempenho de acordo com o janelamento ideal.
     pasta_dados_estatisticos_desempenho = f"K_Fold_{parametro}_{opcao_avaliacao_desempenho}_Desempenho_BLUE2_OC"
@@ -78,10 +78,10 @@ def leitura_dados_estatisticos_desempenho_BLUE2(parametro, n_janelamento_ideal, 
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ---------- 2) FUNÇÃO PARA O PLOTE DOS GRÁFICO DO DADO ESTATÍSTICO DO DESEMPENHO AO LONGO DAS OCUPAÇÕES PARA O JANELAMENTO IDEAL ------------ ###
+### ------ 2) FUNÇÃO PARA O PLOTE DOS GRÁFICO DO DADO ESTATÍSTICO DO DESEMPENHO AO LONGO DAS OCUPAÇÕES PARA O JANELAMENTO IDEAL DA ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 --------- ###
 
-# Definição da função para o plote do gráfico do dado estatístico do desempenho ao longo das ocupações para o janelamento ideal.
-def grafico_dado_estatistico_desempenho_BLUE2(opcao_avaliacao_desempenho, Matriz_Dados_Desempenho):
+# Definição da função para o plote do gráfico do dado estatístico do desempenho ao longo das ocupações para o janelamento ideal para a estimação da amplitude pelo método BLUE2.
+def grafico_dado_estatistico_desempenho_amplitude_BLUE2(opcao_avaliacao_desempenho, Matriz_Dados_Desempenho):
     
     # Definição da variável indice_coluna_ocupações que armazena o valor do índice da coluna das ocupações.
     indice_coluna_ocupacoes = 0
@@ -155,7 +155,7 @@ def grafico_dado_estatistico_desempenho_BLUE2(opcao_avaliacao_desempenho, Matriz
 ### ---------------------------------------------------- 3) FUNÇÃO PRINCIPAL DO CÓDIGO (MAIN) -------------------------------------------------- ###
 
 # Definição da função principal (main) do código.
-def principal_grafico_dado_estatistico_desempenho_BLUE2():
+def principal_grafico_dado_estatistico_desempenho_amplitude_BLUE2():
     
     # Impressão de mensagem no terminal.
     print("Opções de avaliações de desempenho do método:\nErro Médio Estimação (EME) - 1\nErro Médio Quadrático (Mean Squared Error - MSE) - 2\nErro Médio Absoluto (Mean Absolute Erro - MAE) - 3\nRelação Sinal-Ruído (Signal-to-Noise Ratio - SNR) - 4\nDesvio Padrão (DP) - 5")
@@ -214,13 +214,13 @@ def principal_grafico_dado_estatistico_desempenho_BLUE2():
         
     # Chamada das funções.
     
-    Matriz_Dados_Desempenho = leitura_dados_estatisticos_desempenho_BLUE2(parametro, n_janelamento_ideal, mecanismo_desempenho)
-    grafico_dado_estatistico_desempenho_BLUE2(opcao_avaliacao_desempenho, Matriz_Dados_Desempenho)
+    Matriz_Dados_Desempenho = leitura_dados_estatisticos_desempenho_amplitude_BLUE2(parametro, n_janelamento_ideal, mecanismo_desempenho)
+    grafico_dado_estatistico_desempenho_amplitude_BLUE2(opcao_avaliacao_desempenho, Matriz_Dados_Desempenho)
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###
     
 # Chamada da função principal do código.
-principal_grafico_dado_estatistico_desempenho_BLUE2()
+principal_grafico_dado_estatistico_desempenho_amplitude_BLUE2()
 
 # Impressão de uma linha que representa o fim do programa.
 print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")

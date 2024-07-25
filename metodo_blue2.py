@@ -1,8 +1,8 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude central.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 16 de julho de 2024.
+# Data: 25 de julho de 2024.
 
-# Objetivo do código: aplicação do método Best Linear Unbiased Estimator (BLUE 2) para estimar a amplitude central.
+# Objetivo do código: aplicação do método Best Linear Unbiased Estimator (BLUE2) para a estimação da amplitude.
 
 """
 Organização do código:
@@ -105,13 +105,13 @@ def pulso_referencia(n_janelamento):
 ### ----------------------------------------------- 2) FUNÇÃO PARA O MÉTODO BLUE 2 ------------------------------------------------------------- ###
 
 # Definição da função para o método BLUE 2.
-def metodo_BLUE2(Matriz_Pulsos_Sinais_Treino, Matriz_Pulsos_Sinais_Teste, vetor_amplitude_referencia_teste, n_janelamento):
+def metodo_BLUE2(n_janelamento, Matriz_Pulsos_Sinais_Treino_Janelado, Matriz_Pulsos_Sinais_Teste_Janelado, vetor_amplitude_referencia_teste_janelado):
 
     # Criação da lista vazia para armazenar os erros calculados para a amplitude. 
     lista_erro_estimacao_amplitude = []
     
     # A variável Matriz_Covariancia recebe o valor de retorno da função matriz_covariancia.
-    Matriz_Covariancia = matriz_covariancia(Matriz_Pulsos_Sinais_Treino)
+    Matriz_Covariancia = matriz_covariancia(Matriz_Pulsos_Sinais_Treino_Janelado)
     
     # A variável vetor_h recebe o retorno da função pulso_referencia.
     vetor_h = pulso_referencia(n_janelamento)
@@ -135,16 +135,16 @@ def metodo_BLUE2(Matriz_Pulsos_Sinais_Treino, Matriz_Pulsos_Sinais_Teste, vetor_
     # Cálculo da transposta do vetor g1.
     transposta_vetor_g1 = np.transpose(vetor_g1)
     
-    # Para o índice de zero até o número de linhas da matriz Matriz_Pulsos_Sinais_Teste.
-    for indice_linha in range(len(Matriz_Pulsos_Sinais_Teste)):
+    # Para o índice de zero até o número de linhas da matriz Matriz_Pulsos_Sinais_Teste_Janelado.
+    for indice_linha in range(len(Matriz_Pulsos_Sinais_Teste_Janelado)):
         
-        # O vetor vetor_pulsos_sinais corresponde a linha de índice indice_linha da matriz Matriz_Pulsos_Sinais_Teste.    
-        vetor_pulsos_sinais_teste = Matriz_Pulsos_Sinais_Teste[indice_linha]
+        # O vetor vetor_pulsos_sinais corresponde a linha de índice indice_linha da matriz Matriz_Pulsos_Sinais_Teste_Janelado.    
+        vetor_pulsos_sinais_teste = Matriz_Pulsos_Sinais_Teste_Janelado[indice_linha]
     
-        # A amplitude de referência é o elemento de índice indice_linha do vetor vetor_amplitude_referencia_teste.
-        valor_amplitude_referencia_teste = vetor_amplitude_referencia_teste[indice_linha]
+        # A amplitude de referência é o elemento de índice indice_linha do vetor vetor_amplitude_referencia_teste_janelado.
+        valor_amplitude_referencia_teste = vetor_amplitude_referencia_teste_janelado[indice_linha]
         
-        # Cálculo do valor da amplitude estimada pelo método BLUE 2.
+        # Cálculo do valor da amplitude estimada pelo método BLUE2.
         valor_amplitude_estimada = np.dot(transposta_vetor_g1 , vetor_pulsos_sinais_teste)
         
         # Cálculo do erro de estimação da amplitude.

@@ -1,6 +1,6 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude central.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 10 de junho de 2024.
+# Data: 25 de julho de 2024.
 
 # Objetivo do código: realização da leitura dos dados de ruídos no formato free running.
 
@@ -143,13 +143,10 @@ def matriz_covariancia(Matriz_dados_ruidos):
 ### ----------------------------------- 5) FUNÇÃO PARA A CONSTRUÇÃO DA MATRIZ DE COVARIÂNCIA COMO IDENTIDADE ----------------------------------- ###
 
 # Definição da função para a matriz de covariância ser igual a identidade.
-def matriz_covariancia_identidade(Matriz_dados_ruidos):
-    
-    # Número de linhas da matriz de dados de ruídos.
-    n_linhas_Matriz_dados_ruidos = len(Matriz_dados_ruidos)
+def matriz_covariancia_identidade(n_janelamento):
     
     # A matriz de covariância é igual a identidade.
-    matriz_covariancia_ID = np.eye(n_linhas_Matriz_dados_ruidos)
+    matriz_covariancia_ID = np.eye(n_janelamento)
     
     # A função retorna a matriz de covariância igual a identidade.
     return matriz_covariancia_ID

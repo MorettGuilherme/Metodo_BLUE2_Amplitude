@@ -1,22 +1,22 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude central.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 16 de julho de 2024.
+# Data: 25 de julho de 2024.
 
-# Objetivo do código: implementação da validação cruzada K-Fold para o método Best Linear Unbiased Estimator (BLUE 2) para a estimação da amplitude central.
+# Objetivo do código: implementação da validação cruzada K-Fold para o método Best Linear Unbiased Estimator (BLUE2) para a estimação da amplitude.
 
 """ 
 Organização do código:
 
 Importação de arquivos.
-Método: metodo_BLUE2.py
+Método BLUE2 para a estimação da amplitude: metodo_BLUE2.py
 
 Funções presentes:
 
-1) Instrução para salvar em arquivos os dados estatísticos pela validação cruzada k-Fold.
+1) Instrução para salvar em arquivos os dados estatísticos pela validação cruzada k-Fold para a estimação da amplitude pelo método BLUE2.
 Entrada: número de ocupação, número do janelamento, média do dado estatístico, variância do dado estatístico, desvio padrão da amplitude.
 Saída: nada.
 
-2) Instrução da validação cruzada K-Fold.
+2) Instrução da validação cruzada K-Fold para a estimação da amplitude pelo método BLUE2.
 Entrada: matriz com os pulsos de sinais e o vetor da amplitude.
 Saída: nada.
 
@@ -41,15 +41,15 @@ print("\n-----------------------------------------------------------------------
 # Título do programa.
 
 # A variável titulo_programa armazena o título em negrito.
-titulo_programa = colored("Geração de arquivos de saída pela técnica de validação cruzada K-Fold para a estimação da amplitude central pelo método Best Linear Unbiased Estimator (BLUE 2):\n", attrs=["bold"])
+titulo_programa = colored("Geração de arquivos de saída pela técnica de validação cruzada K-Fold para a estimação da amplitude pelo método Best Linear Unbiased Estimator (BLUE2):\n", attrs=["bold"])
 
 # Impressão do título do programa.
 print(titulo_programa)
 
-### ----------------------------------------- 1) INSTRUÇÃO PARA SALVAR OS DADOS ESTATÍSTICOS DO K-FOLD ----------------------------------------- ###
+### --------------------- 1) INSTRUÇÃO PARA SALVAR OS DADOS ESTATÍSTICOS DO K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------------------------- ###
 
-# Definição da instrução para salvar as médias dos dados estatísticos da validação cruzada K-Fold em arquivo de saída.
-def arquivo_saida_dados_estatisticos_k_fold_erro_estimacao_BLUE2(parametro, n_ocupacao, n_janelamento, media_dado_erro, var_dado_erro, DP_dado_erro, dado):
+# Definição da instrução para salvar as médias dos dados estatísticos da validação cruzada K-Fold em arquivo de saída para a estimação da amplitude pelo método BLUE2.
+def arquivo_saida_dados_estatisticos_k_fold_erro_estimacao_BLUE2(parametro, n_ocupacao, n_janelamento, media_dado_erro_estimacao, var_dado_erro_estimacao, DP_dado_erro_estimacao, dado):
 
     # Definição do título presente no arquivo de saída.
     titulo_arquivo_saida = f"janelamento,media_{dado}_erro,var_{dado}_erro,DP_{dado}_erro\n"
@@ -87,7 +87,7 @@ def arquivo_saida_dados_estatisticos_k_fold_erro_estimacao_BLUE2(parametro, n_oc
         # Abre o arquivo de saída no modo de acrescentar (append).
         with open(caminho_arquivo_saida, "a") as arquivo_saida_dados_estatisticos:
             # Escrita dos dados de interesse.
-            arquivo_saida_dados_estatisticos.write(f"{n_janelamento},{media_dado_erro},{var_dado_erro},{DP_dado_erro}\n")
+            arquivo_saida_dados_estatisticos.write(f"{n_janelamento},{media_dado_erro_estimacao},{var_dado_erro_estimacao},{DP_dado_erro_estimacao}\n")
     # Excessão.
     except Exception as e:
         # Impressão de mensagem de alerta.
@@ -95,10 +95,10 @@ def arquivo_saida_dados_estatisticos_k_fold_erro_estimacao_BLUE2(parametro, n_oc
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ----------------------------------------------- 2) INSTRUÇÃO PARA A VALIDAÇÃO CRUZADA K-FOLD ----------------------------------------------- ###
+### --------------------------- 2) INSTRUÇÃO PARA A VALIDAÇÃO CRUZADA K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------------- ###
 
-# Definição da instrução da técnica de validação cruzada K-Fold.
-def K_fold_BLUE2(n_ocupacao, n_janelamento, Matriz_Pulsos_Sinais, vetor_amplitude_referencia):
+# Definição da instrução da técnica de validação cruzada K-Fold para a estimação da amplitude pelo método BLUE2.
+def K_fold_BLUE2(n_ocupacao, n_janelamento, Matriz_Pulsos_Sinais_Janelado, vetor_amplitude_referencia_janelado):
     
     # Criação da variável parâmetro que armazena a string "amplitude".
     parametro = "amplitude"
@@ -113,18 +113,18 @@ def K_fold_BLUE2(n_ocupacao, n_janelamento, Matriz_Pulsos_Sinais, vetor_amplitud
     quantidade_blocos = 100
 
     # Definição da quantidade de elementos de cada bloco.
-    quantidade_elementos_bloco = len(Matriz_Pulsos_Sinais) // quantidade_blocos
+    quantidade_elementos_bloco = len(Matriz_Pulsos_Sinais_Janelado) // quantidade_blocos
     
     # Para i de início em zero até a quantidade de elementos de amostras com incremento igual a quantidade_elementos_bloco.
-    for i in range(0, len(Matriz_Pulsos_Sinais), quantidade_elementos_bloco):
+    for i in range(0, len(Matriz_Pulsos_Sinais_Janelado), quantidade_elementos_bloco):
     
         # Definição do bloco de pulsos de sinais.
-        bloco_pulsos_sinais = Matriz_Pulsos_Sinais[i:i+quantidade_elementos_bloco]
+        bloco_pulsos_sinais = Matriz_Pulsos_Sinais_Janelado[i:i+quantidade_elementos_bloco]
         # O bloco dos pulsos de sinais é acrescentado a lista dos blocos dos pulsos de sinais.
         blocos_pulsos_sinais.append(bloco_pulsos_sinais)
     
         # Definição do bloco dos dados da amplitude de referência.
-        bloco_amplitude_referencia = vetor_amplitude_referencia[i:i+quantidade_elementos_bloco]
+        bloco_amplitude_referencia = vetor_amplitude_referencia_janelado[i:i+quantidade_elementos_bloco]
         # O bloco da amplitude de referência é acrescentado a lista dos blocos da amplitude de referência.
         blocos_amplitude_referencia.append(bloco_amplitude_referencia)
     
@@ -159,7 +159,7 @@ def K_fold_BLUE2(n_ocupacao, n_janelamento, Matriz_Pulsos_Sinais, vetor_amplitud
         bloco_treino_amplitude_referencia = [elemento for sublista in bloco_treino_amplitude_referencia for elemento in sublista]
         
         # A variável bloco_lista_erro_estimacao_amplitude recebe o valor de retorno da função metodo_BLUE1.
-        bloco_lista_erro_estimacao_amplitude = metodo_BLUE2(bloco_treino_pulsos_sinais, bloco_teste_pulsos_sinais, bloco_teste_amplitude_referencia, n_janelamento)
+        bloco_lista_erro_estimacao_amplitude = metodo_BLUE2(n_janelamento, bloco_treino_pulsos_sinais, bloco_teste_pulsos_sinais, bloco_teste_amplitude_referencia)
 
         # Cálculo dos dados estatísticos de cada bloco.
         bloco_media_erro_estimacao = np.mean(bloco_lista_erro_estimacao_amplitude)
@@ -234,9 +234,9 @@ def principal_K_fold_BLUE2():
             
             vetor_amostras_pulsos, vetor_amplitude_referencia, _ = amostras_pulsos_e_referencia(Matriz_Dados_OC_Sem_Pedestal)
         
-            Matriz_Pulsos_Sinais, vetor_amplitude_referencia = amostras_janelamento(vetor_amostras_pulsos, vetor_amplitude_referencia, n_janelamento)
+            Matriz_Pulsos_Sinais_Janelado, vetor_amplitude_referencia_janelado = amostras_janelamento(vetor_amostras_pulsos, vetor_amplitude_referencia, n_janelamento)
     
-            K_fold_BLUE2(n_ocupacao, n_janelamento, Matriz_Pulsos_Sinais, vetor_amplitude_referencia)
+            K_fold_BLUE2(n_ocupacao, n_janelamento, Matriz_Pulsos_Sinais_Janelado, vetor_amplitude_referencia_janelado)
      
 # Chamada da função K_fold_OC.
 principal_K_fold_BLUE2()       

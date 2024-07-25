@@ -1,42 +1,42 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude central.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 16 de julho de 2024.
+# Data: 25 de julho de 2024.
 
-# Objetivo do código: cálculo do desempenho do método Best Linear Unbiased Estimator (BLUE 2) para a estimação da amplitude central pela validação cruzada K-Fold.
+# Objetivo do código: cálculo do desempenho do método Best Linear Unbiased Estimator (BLUE2) para a estimação da amplitude pela validação cruzada K-Fold.
 
 """ 
 Organização do código:
 
 Importação de arquivos.
-Método BLUE 2 para o cálculo do termo da amplitude central: metodo_BLUE2.py
+Método BLUE2 para a estimação da amplitude: metodo_BLUE2.py
 
 Funções presentes:
 
-1) Instrução para salvar em arquivos os dados estatísticos do desempenho do método BLUE 2.
+1) Instrução para salvar em arquivos os dados estatísticos do desempenho do método BLUE2 para a estimação da amplitude.
 Entrada: parâmetro, número de ocupação, número do janelamento ideal, média do desempenho, variância do desempenho, desvio padrão do desempenho e o mecanismo do desempenho.
 Saída: nada.
 
-2) Função para o cálculo do desempenho do método BLUE 2 pelo Erro Médio de Estimação (EME).
+2) Função para o cálculo do desempenho do método BLUE2 pelo Erro Médio de Estimação (EME).
 Entrada: número de elementos presentes em cada bloco e lista dos erros de estimação para cada bloco do K-Fold.
 Saída: média do EME, variância do EME e desvio padrão do EME.
 
-3) Função para o cálculo do desempenho do método BLUE 2 pelo Erro Médio Quadrático (Mean Squared Error - MSE).
+3) Função para o cálculo do desempenho do método BLUE2 pelo Erro Médio Quadrático (Mean Squared Error - MSE).
 Entrada: número de elementos presentes em cada bloco e lista dos erros de estimação para cada bloco do K-Fold.
 Saída: média do MSE, variância do MSE e desvio padrão do MSE.
 
-4) Função para o cálculo do desempenho do método BLUE 2 pelo Erro Médio Absoluto (Mean Absolute Error - MAE).
+4) Função para o cálculo do desempenho do método BLUE2 pelo Erro Médio Absoluto (Mean Absolute Error - MAE).
 Entrada: número de elementos presentes em cada bloco e lista dos erros de estimação para cada bloco do K-Fold.
 Saída: média do MAE, variância do MAE e desvio padrão do MAE.
 
-5) Função para o cálculo do desempenho do método BLUE 2 pela Relação Sinal-Ruído (Signal-to-Noise Ratio - SNR).
+5) Função para o cálculo do desempenho do método BLUE2 pela Relação Sinal-Ruído (Signal-to-Noise Ratio - SNR).
 Entrada: lista dos parâmetros de referência e lista dos erros de estimação para cada bloco do K-Fold.
 Saída: média do SNR, variância do SNR e desvio padrão do SNR.
 
-6) Função para o cálculo do desempenho do método BLUE 2 pelo desvio padrão (DP).
+6) Função para o cálculo do desempenho do método BLUE2 pelo desvio padrão (DP).
 Entrada: número de elementos presentes em cada bloco e lista dos erros de estimação para cada bloco do K-Fold.
 Saída: valor do desvio padrão de cada bloco.
 
-7) Instrução da validação cruzada K-Fold adaptada para o cálculo do desempenho do método BLUE 2 para o cálculo do termo da amplitude.
+7) Instrução da validação cruzada K-Fold adaptada para o cálculo do desempenho do método BLUE 2 para a estimação da amplitude.
 Entrada: parâmetro, número de ocupação, número do janelamento ideal, opção da avaliação do desempenho, matriz com os pulsos de sinais, vetor do parâmetro de referência e a matriz de covariância.
 Saída: nada.
 
@@ -61,14 +61,14 @@ print("\n-----------------------------------------------------------------------
 # Título do programa.
 
 # A variável titulo_programa armazena o título em negrito.
-titulo_programa = colored("Geração de arquivos de saída pela técnica de validação cruzada K-Fold para a estimação da amplitude central pelo método Best Linear Unbiased Estimator (BLUE 2):\n", attrs=["bold"])
+titulo_programa = colored("Geração de arquivos de saída pela técnica de validação cruzada K-Fold para a estimação da amplitude pelo método Best Linear Unbiased Estimator (BLUE2):\n", attrs=["bold"])
 
 # Impressão do título do programa.
 print(titulo_programa)
 
-### ----------------------------------------- 1) INSTRUÇÃO PARA SALVAR OS DADOS ESTATÍSTICOS DO K-FOLD ----------------------------------------- ###
+### ------------------ 1) INSTRUÇÃO PARA SALVAR OS DADOS ESTATÍSTICOS DO K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 -------------------- ###
 
-# Definição da instrução para salvar os dados estatísticos do desempenho do método BLUE 2 para a estimação da amplitude em arquivo de saída.
+# Definição da instrução para salvar os dados estatísticos do desempenho do método BLUE2 para a estimação da amplitude em arquivo de saída.
 def arquivo_saida_dados_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, media_dado_desempenho, var_dado_desempenho, DP_dado_desempenho, mecanismo_desempenho):
 
     # Definição do título presente no arquivo de saída.
@@ -195,10 +195,10 @@ def DP(numero_elementos_bloco, bloco_erro_estimacao):
 
 ## --------------------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ----------- 7) INSTRUÇÃO PARA A VALIDAÇÃO CRUZADA K-FOLD ADAPTADA PARA O CÁLCULO DO DESEMPENHO DO MÉTODO BLUE 2 ---------------------------- ###
+### ------- 7) INSTRUÇÃO PARA A VALIDAÇÃO CRUZADA K-FOLD ADAPTADA PARA O CÁLCULO DO DESEMPENHO DO MÉTODO BLUE 2 PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------- ###
 
-# Definição da instrução da técnica de validação cruzada K-Fold para o cálculo do desempenho do método BLUE 2 para a estimação da amplitude.
-def K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_avaliacao_desempenho, Matriz_Pulsos_Sinais, vetor_amplitude_referencia):
+# Definição da instrução da técnica de validação cruzada K-Fold para o cálculo do desempenho do método BLUE2 para a estimação da amplitude.
+def K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_avaliacao_desempenho, Matriz_Pulsos_Sinais_Janelado, vetor_amplitude_referencia_janelado):
 
     # Caso a variável opcao_avaliacao_desempenho seja igual a 1.
     if opcao_avaliacao_desempenho == 1:
@@ -240,18 +240,18 @@ def K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_av
     quantidade_blocos = 100
 
     # Definição da quantidade de elementos de cada bloco.
-    quantidade_elementos_bloco = len(Matriz_Pulsos_Sinais) // quantidade_blocos
+    quantidade_elementos_bloco = len(Matriz_Pulsos_Sinais_Janelado) // quantidade_blocos
     
     # Para i de início em zero até a quantidade de elementos de amostras com incremento igual a quantidade_elementos_bloco.
-    for i in range(0, len(Matriz_Pulsos_Sinais), quantidade_elementos_bloco):
+    for i in range(0, len(Matriz_Pulsos_Sinais_Janelado), quantidade_elementos_bloco):
     
         # Definição do bloco de pulsos de sinais.
-        bloco_pulsos_sinais = Matriz_Pulsos_Sinais[i:i+quantidade_elementos_bloco]
+        bloco_pulsos_sinais = Matriz_Pulsos_Sinais_Janelado[i:i+quantidade_elementos_bloco]
         # O bloco dos pulsos de sinais é acrescentado a lista dos blocos dos pulsos de sinais.
         blocos_pulsos_sinais.append(bloco_pulsos_sinais)
     
         # Definição do bloco dos dados da amplitude de referência.
-        bloco_amplitude_referencia = vetor_amplitude_referencia[i:i+quantidade_elementos_bloco]
+        bloco_amplitude_referencia = vetor_amplitude_referencia_janelado[i:i+quantidade_elementos_bloco]
         # O bloco da amplitude de referência é acrescentado a lista dos blocos da amplitude de referência.
         blocos_amplitude_referencia.append(bloco_amplitude_referencia)
     
@@ -327,7 +327,7 @@ def K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_av
     var_desempenho = np.var(lista_blocos_valores_desempenho)
     DP_desempenho = np.std(lista_blocos_valores_desempenho)
      
-    # Salva as informações dos dados estatísticos da análise do desempenho do método BLUE 2.
+    # Salva as informações dos dados estatísticos da análise do desempenho do método BLUE2.
     arquivo_saida_dados_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, media_desempenho, var_desempenho, DP_desempenho, mecanismo_desempenho)   
     
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ### 
@@ -342,6 +342,7 @@ def principal_desempenho_BLUE2():
     
     # Impressão de mensagem solicitando ao usuário digitar a opção desejada para a análise do desempenho.
     print("Opções de avaliações de desempenho do método:\nErro Médio Estimação (EME) - 1\nErro Médio Quadrático (Mean Squared Error - MSE) - 2\nErro Médio Absoluto (Mean Absolute Erro - MAE) - 3\nRelação Sinal-Ruído (Signal-to-Noise Ratio - SNR) - 4\nDesvio Padrão (DP) - 5")
+    
     # A variável opcao_avaliacao_desempenho armazena o valor digitado pelo usuário no terminal.
     opcao_avaliacao_desempenho = int(input("Digite o número da opção desejada: "))
     
@@ -384,11 +385,11 @@ def principal_desempenho_BLUE2():
             
         vetor_amostras_pulsos, vetor_amplitude_referencia, vetor_fase_referencia = amostras_pulsos_e_referencia(Matriz_Dados_OC_Sem_Pedestal)
         
-        Matriz_Pulsos_Sinais, vetor_amplitude_referencia = amostras_janelamento(vetor_amostras_pulsos, vetor_amplitude_referencia, n_janelamento_ideal)
+        Matriz_Pulsos_Sinais_Janelado, vetor_amplitude_referencia_janelado = amostras_janelamento(vetor_amostras_pulsos, vetor_amplitude_referencia, n_janelamento_ideal)
             
-        Matriz_Pulsos_Sinais, vetor_fase_referencia = amostras_janelamento(vetor_amostras_pulsos, vetor_fase_referencia, n_janelamento_ideal)
+        Matriz_Pulsos_Sinais_Janelado, vetor_fase_referencia_janelado = amostras_janelamento(vetor_amostras_pulsos, vetor_fase_referencia, n_janelamento_ideal)
     
-        K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_avaliacao_desempenho, Matriz_Pulsos_Sinais, vetor_amplitude_referencia)
+        K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_avaliacao_desempenho, Matriz_Pulsos_Sinais_Janelado, vetor_amplitude_referencia_janelado)
     
     # Definição do tempo final.
     tempo_final = time.time()

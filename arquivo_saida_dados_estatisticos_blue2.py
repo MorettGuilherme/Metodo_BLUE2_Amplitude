@@ -1,18 +1,18 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE 2) - Estimação da amplitude central.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 16 de julho 2024.
+# Data: 25 de julho 2024.
 
-# Objetivo do código: geração de arquivos de saída baseados nos dados estatísticos dos histogramas do erro de estimação da amplitude central pelo método Best Linear Unbiased Estimator (BLUE 2).
+# Objetivo do código: geração de arquivos de saída baseados nos dados estatísticos dos histogramas do erro de estimação da amplitude pelo método Best Linear Unbiased Estimator (BLUE2).
 
 """ 
 Organização do Código:
 
 Importação de arquivos.
-Método: metodo_BLUE2.py
+Método BLUE2 para a estimação da amplitude: metodo_BLUE2.py
 
 Funções presentes:
 
-1) Função para o cálculo dos dados estatísticos do erro de estimação pelo método Best Linear Unbiased Estimator (BLUE 2).
+1) Função para o cálculo dos dados estatísticos do erro de estimação da amplitude pelo método Best Linear Unbiased Estimator (BLUE2).
 Entrada: lista com o erro de estimação da amplitude.
 Saída: a média, a variância e o desvio padrão do erro de estimação da amplitude.
 
@@ -43,14 +43,14 @@ print("\n-----------------------------------------------------------------------
 # Título do programa.
 
 # A variável titulo_programa armazena o título em negrito.
-titulo_programa = colored("Geração de arquivos de saída baseados nos dados estatísticos dos histogramas do erro de estimação da amplitude central pelo método Best Linear Unbiased Estimator (BLUE 2):\n", attrs=["bold"])
+titulo_programa = colored("Geração de arquivos de saída baseados nos dados estatísticos dos histogramas do erro de estimação da amplitude pelo método Best Linear Unbiased Estimator (BLUE2):\n", attrs=["bold"])
 
 # Impressão do título do programa.
 print(titulo_programa)
 
-### ------------------------ 1) FUNÇÃO PARA O CÁLCULO DOS DADOS ESTATÍSTICOS DO ERRO DE ESTIMAÇÃO DA AMPLITUDE --------------------------------- ###
+### ----------------- 1) FUNÇÃO PARA O CÁLCULO DOS DADOS ESTATÍSTICOS DO ERRO DE ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ----------------------------- ###
 
-# Definição da função para o cálculo dos dados estatísticos do erro de estimação da amplitude.
+# Definição da função para o cálculo dos dados estatísticos do erro de estimação da amplitude pelo método BLUE2.
 def dados_estatisticos_erro_estimacao_amplitude_BLUE2(lista_erro_amplitude):
     
     # A lista do erro da amplitude é convertida para o tipo numpy array.
@@ -70,9 +70,9 @@ def dados_estatisticos_erro_estimacao_amplitude_BLUE2(lista_erro_amplitude):
     
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ----------------------- 2) FUNÇÃO PARA A IMPRESSÃO DOS DADOS ESTATÍSTICOS DO ERRO DE ESTIMAÇÃO DA AMPLITUDE -------------------------------- ###
+### ------------------- 2) FUNÇÃO PARA A IMPRESSÃO DOS DADOS ESTATÍSTICOS DO ERRO DE ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------------------------ ###
 
-# Definição da função para a impressão em um arquivo de saída, os dados estatísticos do erro da amplitude.
+# Definição da função para a impressão em um arquivo de saída, os dados estatísticos do erro da amplitude pelo método BLUE2.
 def arquivo_saida_dados_estatisticos_erro_estimacao_amplitude_BLUE2(parametro, n_ocupacao, n_janelamento, media_erro_amplitude, var_erro_amplitude, desvio_padrao_erro_amplitude):
 
     # Definição do título presente no arquivo de saída.
@@ -157,11 +157,11 @@ def principal_arquivo_saida_dados_estatisticos_BLUE2():
     
             vetor_amostras_pulsos, vetor_amplitude_referencia, _ = amostras_pulsos_e_referencia(Matriz_Dados_OC)
             
-            Matriz_Pulsos_Sinais, vetor_amplitude_referencia = amostras_janelamento(vetor_amostras_pulsos, vetor_amplitude_referencia, n_janelamento)
+            Matriz_Pulsos_Sinais_Janelado, vetor_amplitude_referencia_janelado = amostras_janelamento(vetor_amostras_pulsos, vetor_amplitude_referencia, n_janelamento)
             
-            Matriz_Pulsos_Sinais_Treino, Matriz_Pulsos_Sinais_Teste, vetor_amplitude_referencia_treino, vetor_amplitude_referencia_teste = dados_treino_teste_histograma(Matriz_Pulsos_Sinais, vetor_amplitude_referencia)
+            Matriz_Pulsos_Sinais_Treino_Janelado, Matriz_Pulsos_Sinais_Teste_Janelado, vetor_amplitude_referencia_treino_janelado, vetor_amplitude_referencia_teste_janelado = dados_treino_teste_histograma(Matriz_Pulsos_Sinais_Janelado, vetor_amplitude_referencia_janelado)
     
-            lista_erro_estimacao_amplitude = metodo_BLUE2(Matriz_Pulsos_Sinais_Treino, Matriz_Pulsos_Sinais_Teste, vetor_amplitude_referencia_teste, n_janelamento)
+            lista_erro_estimacao_amplitude = metodo_BLUE2(n_janelamento, Matriz_Pulsos_Sinais_Treino_Janelado, Matriz_Pulsos_Sinais_Teste_Janelado, vetor_amplitude_referencia_teste_janelado)
             
             media_erro_estimacao_amplitude, var_erro_estimacao_amplitude, desvio_padrao_erro_estimacao_amplitude = dados_estatisticos_erro_estimacao_amplitude_BLUE2(lista_erro_estimacao_amplitude)
     

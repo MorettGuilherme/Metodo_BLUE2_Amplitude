@@ -74,8 +74,9 @@ As pastas e os arquivos presentes nesse repositório são:
   
 18. histograma_erro_parametro_BLUE2.py
   * Função para o cálculo da estatística do erro de estimação da amplitude.
-  * Função para o plote do histograma do erro de estimação da amplitude.
-  * Função principal.
+  * Instrução para o plote do histograma do tipo A do erro de estimação da amplitude.
+  * Instrução para o plote do histograma do tipo B do erro de estimação da amplitude.
+  * Instrução principal do código.
 
 19. leitura_dados_ocupacao_BLUE2.py
   * Função para a leitura dos dados de ocupação.
