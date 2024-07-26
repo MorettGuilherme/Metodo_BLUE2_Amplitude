@@ -229,14 +229,6 @@ def principal_histograma_erro_estimacao_amplitude_BLUE2():
         # A execução do programa é interrompida.
         exit(1)
     
-    # Chamada ordenada das funções.
-    
-    Matriz_Dados_OC = leitura_dados_ocupacao(n_ocupacao) 
-    
-    Matriz_Dados_OC_Sem_Pedestal = retirada_pedestal(Matriz_Dados_OC)
-    
-    vetor_amostras_pulsos, vetor_amplitude_referencia, vetor_fase_referencia = amostras_pulsos_e_referencia(Matriz_Dados_OC_Sem_Pedestal)
-    
     # Caso a variável tipo_histograma seja "A".
     if tipo_histograma == "A":
     
@@ -254,6 +246,14 @@ def principal_histograma_erro_estimacao_amplitude_BLUE2():
             print("---------------------------------------------------------------------------------------------------------------------------------------")
             # A execução do programa é interrompida.
             exit(1)
+            
+        # Chamada ordenada das funções.
+    
+        Matriz_Dados_OC = leitura_dados_ocupacao(n_ocupacao) 
+    
+        Matriz_Dados_OC_Sem_Pedestal = retirada_pedestal(Matriz_Dados_OC)
+    
+        vetor_amostras_pulsos, vetor_amplitude_referencia, vetor_fase_referencia = amostras_pulsos_e_referencia(Matriz_Dados_OC_Sem_Pedestal)
         
         Matriz_Pulsos_Sinais_Janelado, vetor_amplitude_referencia_janelado = amostras_janelamento(vetor_amostras_pulsos, vetor_amplitude_referencia, n_janelamento)
 
@@ -268,7 +268,7 @@ def principal_histograma_erro_estimacao_amplitude_BLUE2():
         histograma_A_erro_estimacao_amplitude_BLUE2(n_ocupacao, lista_erro_estimacao_amplitude, media_erro_estimacao_amplitude, var_erro_estimacao_amplitude, desvio_padrao_erro_estimacao_amplitude)
     
     # Caso a variável tipo_histograma seja "B".
-    else:
+    elif tipo_histograma == "B":
         
         # A variável n_janelamento_7 recebe a quantidade do janelamento 7.
         n_janelamento_J7 = 7
@@ -276,6 +276,14 @@ def principal_histograma_erro_estimacao_amplitude_BLUE2():
         n_janelamento_J15 = 15
         # A variável n_janelamento_19 recebe a quantidade do janelamento 19.
         n_janelamento_J19 = 19
+        
+        # Chamada ordenada das funções.
+    
+        Matriz_Dados_OC = leitura_dados_ocupacao(n_ocupacao) 
+    
+        Matriz_Dados_OC_Sem_Pedestal = retirada_pedestal(Matriz_Dados_OC)
+    
+        vetor_amostras_pulsos, vetor_amplitude_referencia, vetor_fase_referencia = amostras_pulsos_e_referencia(Matriz_Dados_OC_Sem_Pedestal)
         
         Matriz_Pulsos_Sinais_Janelado_J7, vetor_amplitude_referencia_janelado_J7 = amostras_janelamento(vetor_amostras_pulsos, vetor_amplitude_referencia, n_janelamento_J7)
         Matriz_Pulsos_Sinais_Janelado_J15, vetor_amplitude_referencia_janelado_J15 = amostras_janelamento(vetor_amostras_pulsos, vetor_amplitude_referencia, n_janelamento_J15)
