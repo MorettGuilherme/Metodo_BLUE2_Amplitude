@@ -1,6 +1,6 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 25 de julho de 2024.
+# Data: 28 de julho de 2024.
 
 # Objetivo do código: gráfico do desempenho (EME, MSE, MAE, SNR E DP) ao longo das ocupações de acordo com o janelamento ideal para o método BLUE2 para a estimação da amplitude.
 
@@ -78,9 +78,9 @@ def leitura_dados_estatisticos_desempenho_amplitude_BLUE2(parametro, n_janelamen
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ------ 2) FUNÇÃO PARA O PLOTE DOS GRÁFICO DO DADO ESTATÍSTICO DO DESEMPENHO AO LONGO DAS OCUPAÇÕES PARA O JANELAMENTO IDEAL DA ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 --------- ###
+### ------ 2) INSTRUÇÃO PARA O PLOTE DOS GRÁFICO DO DADO ESTATÍSTICO DO DESEMPENHO AO LONGO DAS OCUPAÇÕES PARA O JANELAMENTO IDEAL DA ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 --------- ###
 
-# Definição da função para o plote do gráfico do dado estatístico do desempenho ao longo das ocupações para o janelamento ideal para a estimação da amplitude pelo método BLUE2.
+# Definição da instrução para o plote do gráfico do dado estatístico do desempenho ao longo das ocupações para o janelamento ideal para a estimação da amplitude pelo método BLUE2.
 def grafico_dado_estatistico_desempenho_amplitude_BLUE2(opcao_avaliacao_desempenho, Matriz_Dados_Desempenho):
     
     # Definição da variável indice_coluna_ocupações que armazena o valor do índice da coluna das ocupações.
@@ -152,9 +152,9 @@ def grafico_dado_estatistico_desempenho_amplitude_BLUE2(opcao_avaliacao_desempen
         
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###        
         
-### ---------------------------------------------------- 3) FUNÇÃO PRINCIPAL DO CÓDIGO (MAIN) -------------------------------------------------- ###
+### ---------------------------------------------------- 3) INSTRUÇÃO PRINCIPAL DO CÓDIGO (MAIN) -------------------------------------------------- ###
 
-# Definição da função principal (main) do código.
+# Definição da instrução principal (main) do código.
 def principal_grafico_dado_estatistico_desempenho_amplitude_BLUE2():
     
     # Impressão de mensagem no terminal.
@@ -219,7 +219,7 @@ def principal_grafico_dado_estatistico_desempenho_amplitude_BLUE2():
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###
     
-# Chamada da função principal do código.
+# Chamada da instrução principal do código.
 principal_grafico_dado_estatistico_desempenho_amplitude_BLUE2()
 
 # Impressão de uma linha que representa o fim do programa.

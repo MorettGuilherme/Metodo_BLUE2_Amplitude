@@ -1,8 +1,8 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 25 de julho de 2024.
+# Data: 28 de julho de 2024.
 
-# Objetivo do código: implementação da validação cruzada K-Fold para o método Best Linear Unbiased Estimator (BLUE2) para a estimação da amplitude.
+# Objetivo do código: implementação da validação cruzada K-Fold para o método BLUE2 para a estimação da amplitude.
 
 """ 
 Organização do código:
@@ -199,7 +199,7 @@ def K_fold_BLUE2(n_ocupacao, n_janelamento, Matriz_Pulsos_Sinais_Janelado, vetor
 
 ### ---------------------------------------------- 3) INSTRUÇÃO PRINCIPAL DO CÓDIGO (MAIN) ----------------------------------------------------- ###
   
-# Definição da função principal (main) do código.
+# Definição da instrução principal (main) do código.
 def principal_K_fold_BLUE2():
     
     # A variável ocupacao_inicial armazena o valor inicial da ocupação que é 0.
@@ -238,7 +238,7 @@ def principal_K_fold_BLUE2():
     
             K_fold_BLUE2(n_ocupacao, n_janelamento, Matriz_Pulsos_Sinais_Janelado, vetor_amplitude_referencia_janelado)
      
-# Chamada da função K_fold_OC.
+# Chamada da instrução K_fold_OC.
 principal_K_fold_BLUE2()       
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###
 

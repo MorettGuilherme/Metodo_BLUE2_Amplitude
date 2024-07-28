@@ -1,6 +1,6 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 25 de julho de 2024.
+# Data: 28 de julho de 2024.
 
 # Objetivo do código: realização da leitura dos dados de ruídos no formato free running.
 
@@ -80,7 +80,6 @@ def leitura_dados_ruidos(n_ocupacao):
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###
 
 ### -------------------------- 2) FUNÇÃO PARA A ORGANIZAÇÃO DOS DADOS DE RUÍDOS DE ACORDO COM O JANELAMENTO ------------------------------------ ###
-
 
 # Definição da função amostras_ruidos_janelamento para a construção da matriz de ruídos de acordo com o janelamento.
 def amostras_ruidos_janelamento(vetor_dados_ruidos, n_janelamento):

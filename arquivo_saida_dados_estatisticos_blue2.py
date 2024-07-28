@@ -1,8 +1,8 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 25 de julho 2024.
+# Data: 28 de julho de 2024.
 
-# Objetivo do código: geração de arquivos de saída baseados nos dados estatísticos dos histogramas do erro de estimação da amplitude pelo método Best Linear Unbiased Estimator (BLUE2).
+# Objetivo do código: geração de arquivos de saída baseados nos dados estatísticos dos histogramas do erro de estimação da amplitude pelo método BLUE2.
 
 """ 
 Organização do Código:
@@ -72,7 +72,7 @@ def dados_estatisticos_erro_estimacao_amplitude_BLUE2(lista_erro_amplitude):
 
 ### ------------------- 2) FUNÇÃO PARA A IMPRESSÃO DOS DADOS ESTATÍSTICOS DO ERRO DE ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------------------------ ###
 
-# Definição da função para a impressão em um arquivo de saída, os dados estatísticos do erro da amplitude pelo método BLUE2.
+# Definição da instrução para a impressão em um arquivo de saída, os dados estatísticos do erro da amplitude pelo método BLUE2.
 def arquivo_saida_dados_estatisticos_erro_estimacao_amplitude_BLUE2(parametro, n_ocupacao, n_janelamento, media_erro_amplitude, var_erro_amplitude, desvio_padrao_erro_amplitude):
 
     # Definição do título presente no arquivo de saída.
@@ -121,7 +121,7 @@ def arquivo_saida_dados_estatisticos_erro_estimacao_amplitude_BLUE2(parametro, n
 
 ### ---------------------------------------- 3) FUNÇÃO PRINCIPAL DO CÓDIGO (MAIN) -------------------------------------------------------------- ###
 
-# Definição da função principal (main) para esse código.
+# Definição da instrução principal (main) para esse código.
 def principal_arquivo_saida_dados_estatisticos_BLUE2():
     
     # A variável ocupacao_inicial armazena o valor inicial da ocupação que é 0.
@@ -169,7 +169,7 @@ def principal_arquivo_saida_dados_estatisticos_BLUE2():
             
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###
 
-# Chamada da função principal do código.
+# Chamada da instrução principal do código.
 principal_arquivo_saida_dados_estatisticos_BLUE2()
 
 # Impressão de uma linha que representa o fim do programa.

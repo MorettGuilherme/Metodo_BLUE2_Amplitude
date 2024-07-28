@@ -1,8 +1,8 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 25 de julho de 2024.
+# Data: 28 de julho de 2024.
 
-# Objetivo do código: cálculo do desempenho do método Best Linear Unbiased Estimator (BLUE2) para a estimação da amplitude pela validação cruzada K-Fold.
+# Objetivo do código: cálculo do desempenho do método BLUE2 para a estimação da amplitude pela validação cruzada K-Fold.
 
 """ 
 Organização do código:

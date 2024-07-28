@@ -1,6 +1,6 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 25 de julho de 2024.
+# Data: 28 de julho de 2024.
 
 # Objetivo do código: construção do gráfico da validação cruzada K-Fold para a estimação da amplitude pelo método BLUE2.
 
@@ -84,7 +84,7 @@ def leitura_dados_estatisticos_k_fold_amplitude_BLUE2(parametro, n_ocupacao, dad
 
 ### ----------------------- 2) INSTRUÇÃO PARA A CONSTRUÇÃO DO GRÁFICO DO TIPO A DA VALIDAÇÃO CRUZADA K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ----------------------------- ###
 
-# Definição da função para a construção do gráfico tipo A pela validação cruzada K-Fold para a estimação da amplitude pelo método BLUE2.
+# Definição da instrução para a construção do gráfico tipo A pela validação cruzada K-Fold para a estimação da amplitude pelo método BLUE2.
 def grafico_A_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dados_K_Fold_OC_10, Matriz_Dados_K_Fold_OC_20, Matriz_Dados_K_Fold_OC_30, Matriz_Dados_K_Fold_OC_40, Matriz_Dados_K_Fold_OC_50, Matriz_Dados_K_Fold_OC_60, Matriz_Dados_K_Fold_OC_70, Matriz_Dados_K_Fold_OC_80, Matriz_Dados_K_Fold_OC_90, Matriz_Dados_K_Fold_OC_100):
     
     # Definição da variável indice_coluna_janelamento que armazena o índice da coluna do janelamento.
@@ -125,7 +125,6 @@ def grafico_A_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dad
         
         # Comando para o nome do eixo das ordenadas.
         plt.ylabel("DP. pelo K-Fold do erro da amplitude (ADC Count)", fontsize = 18)
-        
         
     # Armazenamento dos dados referentes a ocupação 0.
     Matriz_Dados_Medias_K_Fold_OC_0 = Matriz_Dados_K_Fold_OC_0[: , indice_coluna_medias]
@@ -197,7 +196,7 @@ def grafico_A_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dad
 
 ### ------------------------- 2) INSTRUÇÃO PARA A CONSTRUÇÃO DO GRÁFICO DO TIPO B DA VALIDAÇÃO CRUZADA K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------------ ###
 
-# Definição da função para a construção do gráfico do tipo B pela validação cruzada K-Fold para a estimação da amplitude pelo método BLUE2.
+# Definição da instrução para a construção do gráfico do tipo B pela validação cruzada K-Fold para a estimação da amplitude pelo método BLUE2.
 def grafico_B_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dados_K_Fold_OC_10, Matriz_Dados_K_Fold_OC_20, Matriz_Dados_K_Fold_OC_30, Matriz_Dados_K_Fold_OC_40, Matriz_Dados_K_Fold_OC_50, Matriz_Dados_K_Fold_OC_60, Matriz_Dados_K_Fold_OC_70, Matriz_Dados_K_Fold_OC_80, Matriz_Dados_K_Fold_OC_90, Matriz_Dados_K_Fold_OC_100):
     
     # Definição do vetor das ocupações.
@@ -382,7 +381,7 @@ def principal_grafico_k_fold_amplitude_BLUE2():
     
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###
 
-# Chamada da função principal do código.
+# Chamada da instrução principal do código.
 principal_grafico_k_fold_amplitude_BLUE2()
 
 # Impressão de uma linha que representa o fim do programa.

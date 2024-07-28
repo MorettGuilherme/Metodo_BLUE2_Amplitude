@@ -1,8 +1,8 @@
-# EXPERIMENTO ATLAS - Reconstrução de sinal - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
+# EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 25 de julho de 2024.
+# Data: 28 de julho de 2024.
 
-# Objetivo do código: gráfico dos dados estatíticos ao longo das ocupações de acordo com o janelamento para o método Best Linear Unbiased Estimator (BLUE2) para a estimação da amplitude.
+# Objetivo do código: gráfico dos dados estatíticos ao longo das ocupações de acordo com o janelamento para o método BLUE2 para a estimação da amplitude.
 
 """ 
 Organização do Código:
@@ -76,9 +76,9 @@ def leitura_dados_estatisticos_janelamento_amplitude_BLUE2(parametro, n_janelame
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ------------ 2) FUNÇÃO PARA O PLOTE DOS GRÁFICO DO DADO ESTATÍSTICO AO LONGO DAS OCUPAÇÕES PARA UM DETERMINADO JANELAMENTO PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ----------------- ###
+### ------------ 2) INSTRUÇÃO PARA O PLOTE DOS GRÁFICO DO DADO ESTATÍSTICO AO LONGO DAS OCUPAÇÕES PARA UM DETERMINADO JANELAMENTO PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ----------------- ###
 
-# Definição da função para o plote do gráfico do dado estatístico ao longo das ocupações para um determinado janelamento para a estimação da amplitude pelo método BLUE2.
+# Definição da instrução para o plote do gráfico do dado estatístico ao longo das ocupações para um determinado janelamento para a estimação da amplitude pelo método BLUE2.
 def grafico_dado_estatistico_janelamento_amplitude_BLUE2(dado_estatistico, Matriz_Dados_Estatisticos_Janelamento):
     
     # Definição da variável indice_coluna_ocupações que armazena o valor do índice da coluna das ocupações.
@@ -143,7 +143,7 @@ def grafico_dado_estatistico_janelamento_amplitude_BLUE2(dado_estatistico, Matri
         
 ### ---------------------------------------------------- 3) FUNÇÃO PRINCIPAL DO CÓDIGO (MAIN) -------------------------------------------------- ###
 
-# Definição da função principal (main) para esse código.
+# Definição da instrução principal (main) para esse código.
 def principal_grafico_dado_estatistico_janelamento_amplitude_BLUE2():
     
     # Impressão de mensagem no terminal.
@@ -187,7 +187,7 @@ def principal_grafico_dado_estatistico_janelamento_amplitude_BLUE2():
     Matriz_Dados_Estatisticos_Janelamento = leitura_dados_estatisticos_janelamento_amplitude_BLUE2(parametro, n_janelamento)
     grafico_dado_estatistico_janelamento_amplitude_BLUE2(dado_estatistico, Matriz_Dados_Estatisticos_Janelamento)
     
-# Chamada da função principal do código.
+# Chamada da instrução principal do código.
 principal_grafico_dado_estatistico_janelamento_amplitude_BLUE2()
 
 # Impressão de uma linha que representa o fim do programa.
