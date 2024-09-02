@@ -25,10 +25,10 @@ As pastas e os arquivos presentes nesse repositório são:
   * Pasta com os arquivos dos dados estatísticos (média, variância e desvio padrão) da média calculados pela técnica de validação cruzada K-Fold ao decorrer da quantidade de janelamento para cada ocupação.
 
 8. K_Fold_amplitude_MSE_Desempenho_BLUE2_OC
-   * Essa pasta contém arquivos com os dados da análise do erro médio quadrático (MSE) para o janelamento ideal 15 calculados pela técnica de validação cruzada K-Fold.
+  * Essa pasta contém arquivos com os dados da análise do erro médio quadrático (MSE) para o janelamento ideal 15 calculados pela técnica de validação cruzada K-Fold.
 
 9. K_Fold_amplitude_SNR_Desempenho_BLUE2_OC
-   * Essa pasta contém arquivos com os dados da análise da relação sinal ruído (SNR) para o janelamento ideal 15 calculados pela técnica de validação cruzada K-Fold.
+  * Essa pasta contém arquivos com os dados da análise da relação sinal ruído (SNR) para o janelamento ideal 15 calculados pela técnica de validação cruzada K-Fold.
 
 10. K_Fold_amplitude_var_Dados_Estatisticos_BLUE2_OC
   * Pasta com os arquivos dos dados estatísticos (média, variância e desvio padrão) da variância calculados pela técnica de validação cruzada K-Fold ao decorrer da quantidade de janelamento para cada ocupação.

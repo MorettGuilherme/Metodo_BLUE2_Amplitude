@@ -185,6 +185,9 @@ def grafico_A_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dad
     
     # Comando para o grid do gráfico.
     plt.grid()
+    
+    # Ajuste esse limite do eixo vertical de forma que a legenda se encaixe corretamente no gráfico.
+    #plt.ylim(0, 40)
 
     # Comando para a legenda e o posicionamento.
     plt.legend(title = 'Ocupação (OC.)', title_fontproperties = {'weight': 'bold', 'size': 12}, loc = 'upper center', fontsize = 16, ncol = 6)
@@ -280,6 +283,9 @@ def grafico_B_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dad
     plt.errorbar(ocupacoes, Matriz_Dados_K_Fold_J15_OC, yerr = Matriz_Dados_K_Fold_Erros_J15_OC, color = 'yellow', linestyle = '--', marker = 'o', markersize=3, label = '15')
     plt.errorbar(ocupacoes, Matriz_Dados_K_Fold_J17_OC, yerr = Matriz_Dados_K_Fold_Erros_J17_OC, color = 'orange', linestyle = '--', marker = 'o', markersize=3, label = '17')
     plt.errorbar(ocupacoes, Matriz_Dados_K_Fold_J19_OC, yerr = Matriz_Dados_K_Fold_Erros_J19_OC, color = 'red', linestyle = '--', marker = 'o', markersize=3, label = '19')
+    
+    # Ajuste esse limite do eixo vertical de forma que a legenda se encaixe corretamente no gráfico.
+    # plt.ylim(0, 38)
     
     # Comando para o grid do gráfico.
     plt.grid()
