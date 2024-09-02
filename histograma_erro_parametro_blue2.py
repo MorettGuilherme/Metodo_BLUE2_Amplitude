@@ -1,6 +1,6 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 28 de julho de 2024.
+# Data: 02 de setembro de 2024.
 
 # Objetivo do código: análise do erro de estimação da amplitude pelo método BLUE2.
 
@@ -103,9 +103,20 @@ def histograma_A_erro_estimacao_amplitude_BLUE2(n_ocupacao, lista_erro_estimacao
     
     # A variável x_sup recebe o valor superior do eixo das abscissas.
     x_sup = 300
+    
+    # Conversão das variáveis para strings adaptadas para o sistema numérico brasileiro.
+
+    media_erro_estimacao_amplitude = round(media_erro_estimacao_amplitude, 6)
+    media_erro_estimacao_amplitude = str(media_erro_estimacao_amplitude).replace('.', ',')
+    
+    var_erro_estimacao_amplitude = round(var_erro_estimacao_amplitude, 6)
+    var_erro_estimacao_amplitude = str(var_erro_estimacao_amplitude).replace('.', ',')
+    
+    desvio_padrao_erro_estimacao_amplitude = round(desvio_padrao_erro_estimacao_amplitude, 6)
+    desvio_padrao_erro_estimacao_amplitude = str(desvio_padrao_erro_estimacao_amplitude).replace('.', ',')
 
     # A variável texto recebe uma string com as informações de interesse.
-    texto = f"Média: {round(media_erro_estimacao_amplitude, 6)} \n Variância: {round(var_erro_estimacao_amplitude, 6)} \n Desvio padrão: {round(desvio_padrao_erro_estimacao_amplitude, 6)}"
+    texto = f"Média: {media_erro_estimacao_amplitude} \n Variância: {var_erro_estimacao_amplitude} \n Desvio padrão: {desvio_padrao_erro_estimacao_amplitude}"
 
     # Definição do histograma a partir do vetor vetor_erro_amplitude.
     plt.hist(vetor_erro_amplitude, bins = n_bins, range = [x_inf, x_sup], edgecolor = 'black', linewidth = 1.2)
@@ -160,14 +171,43 @@ def histograma_B_erro_estimacao_amplitude_BLUE2(n_ocupacao, lista_erro_estimacao
     # A variável x_sup recebe o valor superior do eixo das abscissas.
     x_sup = 300
     
+    # Conversão das variáveis para strings adaptadas para o sistema numérico brasileiro.
+    
+    media_erro_estimacao_amplitude_J7 = round(media_erro_estimacao_amplitude_J7, 6)
+    media_erro_estimacao_amplitude_J7 = str(media_erro_estimacao_amplitude_J7).replace('.', ',')
+    
+    var_erro_estimacao_amplitude_J7 = round(var_erro_estimacao_amplitude_J7, 6)
+    var_erro_estimacao_amplitude_J7 = str(var_erro_estimacao_amplitude_J7).replace('.', ',')
+    
+    desvio_padrao_erro_estimacao_amplitude_J7 = round(desvio_padrao_erro_estimacao_amplitude_J7, 6)
+    desvio_padrao_erro_estimacao_amplitude_J7 = str(desvio_padrao_erro_estimacao_amplitude_J7).replace('.', ',')
+    
+    media_erro_estimacao_amplitude_J15 = round(media_erro_estimacao_amplitude_J15, 6)
+    media_erro_estimacao_amplitude_J15 = str(media_erro_estimacao_amplitude_J15).replace('.', ',')
+    
+    var_erro_estimacao_amplitude_J15 = round(var_erro_estimacao_amplitude_J15, 6)
+    var_erro_estimacao_amplitude_J15 = str(var_erro_estimacao_amplitude_J15).replace('.', ',')
+    
+    desvio_padrao_erro_estimacao_amplitude_J15 = round(desvio_padrao_erro_estimacao_amplitude_J15, 6)
+    desvio_padrao_erro_estimacao_amplitude_J15 = str(desvio_padrao_erro_estimacao_amplitude_J15).replace('.', ',')
+    
+    media_erro_estimacao_amplitude_J19 = round(media_erro_estimacao_amplitude_J19, 6)
+    media_erro_estimacao_amplitude_J19 = str(media_erro_estimacao_amplitude_J19).replace('.', ',')
+    
+    var_erro_estimacao_amplitude_J19 = round(var_erro_estimacao_amplitude_J19, 6)
+    var_erro_estimacao_amplitude_J19 = str(var_erro_estimacao_amplitude_J19).replace('.', ',')
+    
+    desvio_padrao_erro_estimacao_amplitude_J19 = round(desvio_padrao_erro_estimacao_amplitude_J19, 6)
+    desvio_padrao_erro_estimacao_amplitude_J19 = str(desvio_padrao_erro_estimacao_amplitude_J19).replace('.', ',')
+    
     # A variável legenda_J7 recebe a legenda do histograma para o janelamento 7.
-    legenda_J7 = f'Janelamento 7\nMédia: {round(media_erro_estimacao_amplitude_J7, 6)}\nVariância: {round(var_erro_estimacao_amplitude_J7,6)}\nDesvio Padrão: {round(desvio_padrao_erro_estimacao_amplitude_J7, 6)}'
+    legenda_J7 = f'Janelamento 7\nMédia: {media_erro_estimacao_amplitude_J7}\nVariância: {var_erro_estimacao_amplitude_J7}\nDesvio Padrão: {desvio_padrao_erro_estimacao_amplitude_J7}'
     
     # A variável legenda_J15 recebe a legenda do histograma para o janelamento 15.
-    legenda_J15 = f'Janelamento 15\nMédia: {round(media_erro_estimacao_amplitude_J15, 6)}\nVariância: {round(var_erro_estimacao_amplitude_J15,6)}\nDesvio Padrão: {round(desvio_padrao_erro_estimacao_amplitude_J15, 6)}'
+    legenda_J15 = f'Janelamento 15\nMédia: {media_erro_estimacao_amplitude_J15}\nVariância: {var_erro_estimacao_amplitude_J15}\nDesvio Padrão: {desvio_padrao_erro_estimacao_amplitude_J15}'
     
     # A variável legenda_J19 recebe a legenda do histograma para o janelamento 19.
-    legenda_J19 = f'Janelamento 19\nMédia: {round(media_erro_estimacao_amplitude_J19, 6)}\nVariância: {round(var_erro_estimacao_amplitude_J19,6)}\nDesvio Padrão: {round(desvio_padrao_erro_estimacao_amplitude_J19, 6)}'
+    legenda_J19 = f'Janelamento 19\nMédia: {media_erro_estimacao_amplitude_J19}\nVariância: {var_erro_estimacao_amplitude_J19}\nDesvio Padrão: {desvio_padrao_erro_estimacao_amplitude_J19}'
     
     # Definição dos histogramas para diferentes janelamentos e uma dada ocupação.
     plt.hist(vetor_erro_estimacao_amplitude_J7, bins = n_bins, color='blue', range = [x_inf, x_sup], histtype = 'step', label = legenda_J7)

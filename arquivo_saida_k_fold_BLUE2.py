@@ -1,6 +1,6 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 28 de julho de 2024.
+# Data: 02 de setembro de 2024.
 
 # Objetivo do código: implementação da validação cruzada K-Fold para o método BLUE2 para a estimação da amplitude.
 
@@ -13,7 +13,7 @@ Método BLUE2 para a estimação da amplitude: metodo_BLUE2.py
 Funções presentes:
 
 1) Instrução para salvar em arquivos os dados estatísticos pela validação cruzada k-Fold para a estimação da amplitude pelo método BLUE2.
-Entrada: número de ocupação, número do janelamento, média do dado estatístico, variância do dado estatístico, desvio padrão da amplitude.
+Entrada: número de ocupação, número do janelamento, média do dado estatístico, variância do dado estatístico e desvio padrão do dado estatístico da amplitude.
 Saída: nada.
 
 2) Instrução da validação cruzada K-Fold para a estimação da amplitude pelo método BLUE2.

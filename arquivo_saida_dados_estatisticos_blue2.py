@@ -1,6 +1,6 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 28 de julho de 2024.
+# Data: 02 de setembro de 2024.
 
 # Objetivo do código: geração de arquivos de saída baseados nos dados estatísticos dos histogramas do erro de estimação da amplitude pelo método BLUE2.
 
@@ -72,13 +72,13 @@ def dados_estatisticos_erro_estimacao_amplitude_BLUE2(lista_erro_amplitude):
 
 ### ------------------- 2) FUNÇÃO PARA A IMPRESSÃO DOS DADOS ESTATÍSTICOS DO ERRO DE ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------------------------ ###
 
-# Definição da instrução para a impressão em um arquivo de saída, os dados estatísticos do erro da amplitude pelo método BLUE2.
-def arquivo_saida_dados_estatisticos_erro_estimacao_amplitude_BLUE2(parametro, n_ocupacao, n_janelamento, media_erro_amplitude, var_erro_amplitude, desvio_padrao_erro_amplitude):
+# Definição da instrução para a impressão em um arquivo de saída, os dados estatísticos do erro de estimação da amplitude pelo método BLUE2.
+def arquivo_saida_dados_estatisticos_erro_estimacao_amplitude_BLUE2(parametro, n_ocupacao, n_janelamento, media_erro_estimacao_amplitude, var_erro_estimacao_amplitude, desvio_padrao_erro_estimacao_amplitude):
 
     # Definição do título presente no arquivo de saída.
     titulo_arquivo_saida = "Oc,media_erro,var_erro,desvio_padrao_erro\n"
 
-    # Definição da pasta em que contém o arquivo de saída.
+    # Definição da pasta que contém o arquivo de saída.
     pasta_saida = f"Dados_Estatisticos_BLUE2_{parametro}_OC"
 
     # Caso a pasta não exista.
@@ -110,7 +110,7 @@ def arquivo_saida_dados_estatisticos_erro_estimacao_amplitude_BLUE2(parametro, n
         # Abre o arquivo de saída no modo de acrescentar (append).
         with open(caminho_arquivo_saida, "a") as arquivo_saida_dados_estatisticos:
             # Escrita dos dados de interesse.
-            arquivo_saida_dados_estatisticos.write(f"{n_ocupacao},{media_erro_amplitude},{var_erro_amplitude},{desvio_padrao_erro_amplitude}\n")
+            arquivo_saida_dados_estatisticos.write(f"{n_ocupacao},{media_erro_estimacao_amplitude},{var_erro_estimacao_amplitude},{desvio_padrao_erro_estimacao_amplitude}\n")
         
     # Excessão.
     except Exception as e:

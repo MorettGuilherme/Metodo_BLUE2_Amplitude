@@ -1,4 +1,4 @@
-A segunda versão do método Melhor Estimador Linear Não Enviesado (Best Linear Unbiased Estimador - BLUE 2) visa a estimaçaõ da amplitude central. Diferentemente de sua primeira versão, o método fornece o valor da amplitude central estimada e não mais um vetor de parâmetros.
+A segunda versão do método Melhor Estimador Linear Não Enviesado (Best Linear Unbiased Estimador - BLUE 2) visa a estimação da amplitude central. Diferentemente de sua primeira versão, o método fornece o valor da amplitude central estimada e não mais um vetor de parâmetros.
 Os resultados foram melhores que o da primeira versão. Pela análise estatística da validação cruzada K-Fold, o janelamento 15 pode ser adotado como sendo o ideal.
 
 As pastas e os arquivos presentes nesse repositório são:

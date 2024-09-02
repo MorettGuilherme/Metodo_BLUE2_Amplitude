@@ -1,6 +1,6 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 28 de julho de 2024.
+# Data: 02 de setembro de 2024.
 
 # Objetivo do código: gráfico do desempenho (EME, MSE, MAE, SNR E DP) ao longo das ocupações de acordo com o janelamento ideal para o método BLUE2 para a estimação da amplitude.
 
@@ -118,7 +118,7 @@ def grafico_dado_estatistico_desempenho_amplitude_BLUE2(opcao_avaliacao_desempen
     if opcao_avaliacao_desempenho == 2:
               
         # Comando para o nome do eixo das ordenadas de acordo com o erro médio quadrático.
-        plt.ylabel(r"Média do erro médio quadrático (ADC Count)^2", fontsize = 18)
+        plt.ylabel(r"Média do erro médio quadrático (ADC Count)$^2$", fontsize = 18)
               
     # Caso a variável opcao_avalicao_desempenho seja 3.
     elif opcao_avaliacao_desempenho == 3:
