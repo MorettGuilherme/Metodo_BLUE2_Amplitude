@@ -17,7 +17,7 @@ Funções presentes:
 Entrada: número de janelamento.
 Saída: vetor pulso de referência para cada instante de tempo de acordo com o janelamento.
 
-2) Função para o método BLUE 1.
+2) Função para o método BLUE2.
 Entrada: matriz com os pulsos de sinais da etapa de treino, matriz com os pulsos de sinais da etapa de teste, vetor com a amplitude de referência e o número de janelamento.
 Saída: lista com o erro de estimação pelo método BLUE 2 para a amplitude.
 """
@@ -102,9 +102,9 @@ def pulso_referencia(n_janelamento):
 
 ### -------------------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ----------------------------------------------- 2) FUNÇÃO PARA O MÉTODO BLUE 2 ------------------------------------------------------------- ###
+### ----------------------------------------------- 2) FUNÇÃO PARA O MÉTODO BLUE2 ------------------------------------------------------------- ###
 
-# Definição da função para o método BLUE 2.
+# Definição da função para o método BLUE2.
 def metodo_BLUE2(n_janelamento, Matriz_Pulsos_Sinais_Treino_Janelado, Matriz_Pulsos_Sinais_Teste_Janelado, vetor_amplitude_referencia_teste_janelado):
 
     # Criação da lista vazia para armazenar os erros calculados para a amplitude. 
