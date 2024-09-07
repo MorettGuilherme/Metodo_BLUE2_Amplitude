@@ -195,7 +195,7 @@ def DP(numero_elementos_bloco, bloco_erro_estimacao):
 
 ## --------------------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ------- 7) INSTRUÇÃO PARA A VALIDAÇÃO CRUZADA K-FOLD ADAPTADA PARA O CÁLCULO DO DESEMPENHO DO MÉTODO BLUE 2 PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------- ###
+### ------- 7) INSTRUÇÃO PARA A VALIDAÇÃO CRUZADA K-FOLD ADAPTADA PARA O CÁLCULO DO DESEMPENHO DO MÉTODO BLUE2 PARA A ESTIMAÇÃO DA AMPLITUDE ------------- ###
 
 # Definição da instrução da técnica de validação cruzada K-Fold para o cálculo do desempenho do método BLUE2 para a estimação da amplitude.
 def K_fold_desempenho_BLUE2(parametro, n_ocupacao, n_janelamento_ideal, opcao_avaliacao_desempenho, Matriz_Pulsos_Sinais_Janelado, vetor_amplitude_referencia_janelado):
@@ -367,9 +367,9 @@ def principal_desempenho_BLUE2():
     # A variável incremento_ocupacao armazena o valor de incremento entre as ocupações que é 10.
     incremento_ocupacao = 10
     
-    # A variável n_janelamento_ideal recebe o valor do janelamento ideal do método BLUE 2.
+    # A variável n_janelamento_ideal recebe o valor do janelamento ideal do método BLUE2.
     # Obs.: essa análise deve ser realizada previamento pela interpretação dos gráficos gerados pelo K-Fold (grafico_k_fold_BLUE2).
-    n_janelamento_ideal = 15
+    n_janelamento_ideal = int(input("Digite o número do janelamento ideal para o parâmetro estimado desejado: "))
     
     # Definição do tempo inicial.
     tempo_inicial = time.time()
