@@ -209,8 +209,8 @@ def principal_grafico_dado_estatistico_desempenho_amplitude_BLUE2():
     parametro = "amplitude"
     
     # A variável n_janelamento_ideal recebe o valor do janelamento ideal do método BLUE2.
-    # Obs.: essa análise deve ser realizada previamento pela interpretação dos gráficos gerados pelo K-Fold (grafico_k_fold_blue2).
-    n_janelamento_ideal = 15
+    # Obs.: essa análise deve ser realizada previamento pela interpretação dos gráficos gerados pelo K-Fold (grafico_k_fold_BLUE2).
+    n_janelamento_ideal = int(input("Digite o número do janelamento ideal para o parâmetro estimado desejado: "))
         
     # Chamada das funções.
     
