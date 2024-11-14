@@ -1,6 +1,6 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 02 de setembro de 2024.
+# Data: 14 de novembro de 2024.
 
 # Objetivo do código: aplicação do método Best Linear Unbiased Estimator (BLUE2) para a estimação da amplitude.
 
@@ -29,7 +29,7 @@ import numpy as np
 from leitura_dados_ocupacao_BLUE2 import *
 from leitura_dados_ruidos_BLUE2 import *
 
-### ------------------------------------------------- 1) FUNÇÃO PARA O PULSO DE REFERÊNCIA ----------------------------------------------------- ###
+### ---------------------------------------- 1) FUNÇÃO PARA O PULSO DE REFERÊNCIA --------------------------------------------------- ###
 
 # Definição da função para o vetor pulso de referência de acordo com o janelamento.
 def pulso_referencia(n_janelamento):
@@ -100,9 +100,9 @@ def pulso_referencia(n_janelamento):
     # A função retorna o vetor pulso de referência.
     return vetor_pulso_referencia
 
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ----------------------------------------------- 2) FUNÇÃO PARA O MÉTODO BLUE2 ------------------------------------------------------------- ###
+### ------------------------------------------ 2) FUNÇÃO PARA O MÉTODO BLUE2 -------------------------------------------------------- ###
 
 # Definição da função para o método BLUE2.
 def metodo_BLUE2(n_janelamento, Matriz_Pulsos_Sinais_Treino_Janelado, Matriz_Pulsos_Sinais_Teste_Janelado, vetor_amplitude_referencia_teste_janelado):
@@ -130,7 +130,9 @@ def metodo_BLUE2(n_janelamento, Matriz_Pulsos_Sinais_Treino_Janelado, Matriz_Pul
     transposta_h = np.transpose(vetor_h)
     
     # Cálculo do vetor g1.
-    vetor_g1 = (np.dot(Inversa_Matriz_Covariancia, vetor_h))/(np.dot(np.dot(transposta_h, Inversa_Matriz_Covariancia), vetor_h))
+    #vetor_g1 = (np.dot(Inversa_Matriz_Covariancia, vetor_h))/(np.dot(np.dot(transposta_h, Inversa_Matriz_Covariancia), vetor_h))
+    
+    vetor_g1 = (np.dot(transposta_h, Inversa_Matriz_Covariancia))/(np.dot(np.dot(transposta_h, Inversa_Matriz_Covariancia),vetor_h))
     
     # Cálculo da transposta do vetor g1.
     transposta_vetor_g1 = np.transpose(vetor_g1)
@@ -156,4 +158,4 @@ def metodo_BLUE2(n_janelamento, Matriz_Pulsos_Sinais_Treino_Janelado, Matriz_Pul
     # A função retorna a lista lista_erro_estimacao_amplitude.
     return lista_erro_estimacao_amplitude
  
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###

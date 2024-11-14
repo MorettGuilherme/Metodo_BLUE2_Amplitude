@@ -1,6 +1,6 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 02 de setembro de 2024.
+# Data: 14 de novembro de 2024.
 
 # Objetivo do código: realização da leitura dos dados de ruídos no formato free running.
 
@@ -39,7 +39,7 @@ Saída: matriz de covariância igual a identidade.
 import numpy as np
 import os
 
-### ------------------------------------------ 1) FUNÇÃO PARA A LEITURA DOS DADOS DE RUÍDOS ---------------------------------------------------- ###
+### ------------------------------------- 1) FUNÇÃO PARA A LEITURA DOS DADOS DE RUÍDOS ---------------------------------------------- ###
 
 # Definição da função para a leitura dos dados de ruídos no formato free running.
 def leitura_dados_ruidos(n_ocupacao):
@@ -77,9 +77,9 @@ def leitura_dados_ruidos(n_ocupacao):
     # A função retorna o vetor vetor_dados_ruidos.
     return vetor_dados_ruidos
 
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### -------------------------- 2) FUNÇÃO PARA A ORGANIZAÇÃO DOS DADOS DE RUÍDOS DE ACORDO COM O JANELAMENTO ------------------------------------ ###
+### ----------------------- 2) FUNÇÃO PARA A ORGANIZAÇÃO DOS DADOS DE RUÍDOS DE ACORDO COM O JANELAMENTO ---------------------------- ###
 
 # Definição da função amostras_ruidos_janelamento para a construção da matriz de ruídos de acordo com o janelamento.
 def amostras_ruidos_janelamento(vetor_dados_ruidos, n_janelamento):
@@ -104,9 +104,9 @@ def amostras_ruidos_janelamento(vetor_dados_ruidos, n_janelamento):
     # A função retorna a matriz Matriz_dados_pulsos e o vetor vetor_parametro_referencia.
     return Matriz_dados_ruidos
 
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ----------------------------- 3) FUNÇÃO PARA SEPARAÇÃO EM DADOS DE RUÍDOS DE TREINO E DE TESTE --------------------------------------------- ###
+### --------------------------- 3) FUNÇÃO PARA SEPARAÇÃO EM DADOS DE RUÍDOS DE TREINO E DE TESTE ------------------------------------ ###
 
 # Definição da função para a separação dos dados em treino e teste.
 def dados_ruidos_treino_teste_histograma(Matriz_dados_ruidos):
@@ -124,9 +124,9 @@ def dados_ruidos_treino_teste_histograma(Matriz_dados_ruidos):
     # A função retorna a matriz dos dados de ruídos dividida em treino e teste pela metade do dataset inicial.    
     return Matriz_dados_ruidos_treino, Matriz_dados_ruidos_teste
         
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ------------------------------------- 4) FUNÇÃO PARA A CONSTRUÇÃO DA MATRIZ DE COVARIÂNCIA ------------------------------------------------- ###
+### -------------------------------- 4) FUNÇÃO PARA A CONSTRUÇÃO DA MATRIZ DE COVARIÂNCIA ------------------------------------------- ###
 
 # Definição da função para o cálculo da matriz de covariância a partir dos dados de ruídos.
 def matriz_covariancia(Matriz_dados_ruidos):
@@ -137,9 +137,9 @@ def matriz_covariancia(Matriz_dados_ruidos):
     # A função retorna a matriz de covariância de ruídos.
     return Matriz_covariancia_ruidos
 
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ----------------------------------- 5) FUNÇÃO PARA A CONSTRUÇÃO DA MATRIZ DE COVARIÂNCIA COMO IDENTIDADE ----------------------------------- ###
+### -------------------------------- 5) FUNÇÃO PARA A CONSTRUÇÃO DA MATRIZ DE COVARIÂNCIA COMO IDENTIDADE --------------------------- ###
 
 # Definição da função para a matriz de covariância ser igual a identidade.
 def matriz_covariancia_identidade(n_janelamento):
@@ -150,4 +150,4 @@ def matriz_covariancia_identidade(n_janelamento):
     # A função retorna a matriz de covariância igual a identidade.
     return matriz_covariancia_ID
 
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###

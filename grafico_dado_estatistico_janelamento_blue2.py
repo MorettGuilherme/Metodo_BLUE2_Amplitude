@@ -1,6 +1,6 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 02 de setembro de 2024.
+# Data: 14 de novembro de 2024.
 
 # Objetivo do código: gráfico dos dados estatíticos ao longo das ocupações de acordo com o janelamento para o método BLUE2 para a estimação da amplitude.
 
@@ -29,7 +29,7 @@ import os
 from termcolor import colored
 
 # Impressão de uma linha que representa o início do programa.
-print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")
+print("\n----------------------------------------------------------------------------------------------------------------------------\n")
 
 # Título do programa.
 
@@ -39,7 +39,7 @@ titulo_programa = colored("Plote do gráfico do dado estatístico do erro de est
 # Impressão do título do programa.
 print(titulo_programa)
 
-### ---------- 1) FUNÇÃO PARA A LEITURA DOS DADOS ESTATÍSTICOS DE TODAS AS OCUPAÇÕES PARA UM DETERMINADO JANELAMENTO PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------- ###
+### --- 1) FUNÇÃO PARA A LEITURA DOS DADOS ESTATÍSTICOS DE TODAS AS OCUPAÇÕES PARA UM DETERMINADO JANELAMENTO PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 --- ###
 
 # Definição da função para a leitura dos dados estatísticos de todas as ocupações para um determinado janelamento para a estimação da amplitude pelo método BLUE2.
 def leitura_dados_estatisticos_janelamento_amplitude_BLUE2(parametro, n_janelamento):
@@ -74,9 +74,9 @@ def leitura_dados_estatisticos_janelamento_amplitude_BLUE2(parametro, n_janelame
     # A função retorna a matriz Matriz_Dados_Estatisticos_Janelamento.
     return Matriz_Dados_Estatisticos_Janelamento
 
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ------------ 2) INSTRUÇÃO PARA O PLOTE DOS GRÁFICO DO DADO ESTATÍSTICO AO LONGO DAS OCUPAÇÕES PARA UM DETERMINADO JANELAMENTO PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ----------------- ###
+### --- 2) INSTRUÇÃO PARA O PLOTE DOS GRÁFICO DO DADO ESTATÍSTICO AO LONGO DAS OCUPAÇÕES PARA UM DETERMINADO JANELAMENTO PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 --- ###
 
 # Definição da instrução para o plote do gráfico do dado estatístico ao longo das ocupações para um determinado janelamento para a estimação da amplitude pelo método BLUE2.
 def grafico_dado_estatistico_janelamento_amplitude_BLUE2(dado_estatistico, Matriz_Dados_Estatisticos_Janelamento):
@@ -139,11 +139,11 @@ def grafico_dado_estatistico_janelamento_amplitude_BLUE2(dado_estatistico, Matri
     # Comando para o plote.
     plt.show()
         
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###        
+### --------------------------------------------------------------------------------------------------------------------------------- ###        
         
-### ---------------------------------------------------- 3) FUNÇÃO PRINCIPAL DO CÓDIGO (MAIN) -------------------------------------------------- ###
+### ------------------------------------------- 3) FUNÇÃO PRINCIPAL DO CÓDIGO ------------------------------------------------------- ###
 
-# Definição da instrução principal (main) para esse código.
+# Definição da instrução principal para esse código.
 def principal_grafico_dado_estatistico_janelamento_amplitude_BLUE2():
     
     # Impressão de mensagem no terminal.
@@ -160,7 +160,7 @@ def principal_grafico_dado_estatistico_janelamento_amplitude_BLUE2():
     
         # Exibição de uma mensagem de alerta de que a opção solicitada é inválida.
         print("Essa opção é inválida!")
-        print("---------------------------------------------------------------------------------------------------------------------------------------")
+        print("------------------------------------------------------------------------------------------------------------------------")
         # A execução do programa é interrompida.
         exit(1)
           
@@ -178,7 +178,7 @@ def principal_grafico_dado_estatistico_janelamento_amplitude_BLUE2():
     
         # Exibição de uma mensagem de alerta de que a quantidade de janelamento solicitada é inválida.
         print("Quantidade de janelamento inválida! Opções de janelamento: 7, 9, 11, 13, 15, 17, 19.")
-        print("---------------------------------------------------------------------------------------------------------------------------------------")
+        print("------------------------------------------------------------------------------------------------------------------------")
         # A execução do programa é interrompida.
         exit(1)
         
@@ -191,7 +191,7 @@ def principal_grafico_dado_estatistico_janelamento_amplitude_BLUE2():
 principal_grafico_dado_estatistico_janelamento_amplitude_BLUE2()
 
 # Impressão de uma linha que representa o fim do programa.
-print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")
+print("\n----------------------------------------------------------------------------------------------------------------------------\n")
     
     
             

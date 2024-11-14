@@ -1,6 +1,6 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 02 de setembro de 2024.
+# Data: 14 de novembro de 2024.
 
 # Objetivo do código: gráfico do desempenho (EME, MSE, MAE, SNR E DP) ao longo das ocupações de acordo com o janelamento ideal para o método BLUE2 para a estimação da amplitude.
 
@@ -13,10 +13,10 @@ Funções presentes:
 
 1) Função para a leitura dos dados do desempenho da estimação da amplitude pelo método BLUE2 de todas as ocupações para o janelamento ideal.
 Entrada: parâmetro estimado, número do janelamento ideal, opção de avaliação do desempenho.
-Saída: matriz com os dados de entrada organizados de acordo com a coluna (número da ocupação, média, variância e desvio padrão do desempenho do método BLUE 2).
+Saída: matriz com os dados de entrada organizados de acordo com a coluna (número da ocupação, média, variância e desvio padrão do desempenho do método BLUE2).
 
 2) Instrução para o plote do gráfico do desempenho da estimação da amplitude pelo método BLUE2 ao longo das ocupações para o janelamento ideal.
-Entrada: matriz dos dados de desempenho do método BLUE 2.
+Entrada: matriz dos dados de desempenho do método BLUE2.
 Saída: nada.
 
 3) Instrução principal do código.
@@ -31,7 +31,7 @@ import os
 from termcolor import colored
 
 # Impressão de uma linha que representa o início do programa.
-print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")
+print("\n----------------------------------------------------------------------------------------------------------------------------\n")
 
 # Título do programa.
 
@@ -41,9 +41,9 @@ titulo_programa = colored("Plote do gráfico do desempenho (EME, MSE, MAE, SNR o
 # Impressão do título do programa.
 print(titulo_programa)
 
-### ---------------------------- 1) FUNÇÃO PARA A LEITURA DOS DADOS ESTATÍSTICOS DO DESEMPENHO DA ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE 2 -------------------------------- ###
+### -------- 1) FUNÇÃO PARA A LEITURA DOS DADOS ESTATÍSTICOS DO DESEMPENHO DA ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 -------------- ###
 
-# Definição da função para a leitura dos dados estatísticos do desempenho da estimação da amplitude pelo método BLUE 2.
+# Definição da função para a leitura dos dados estatísticos do desempenho da estimação da amplitude pelo método BLUE2.
 def leitura_dados_estatisticos_desempenho_amplitude_BLUE2(parametro, n_janelamento_ideal, opcao_avaliacao_desempenho):
 
     # Nome da pasta em que se encontra o arquivo de entrada dos dados estatísticos do desempenho de acordo com o janelamento ideal.
@@ -76,9 +76,9 @@ def leitura_dados_estatisticos_desempenho_amplitude_BLUE2(parametro, n_janelamen
     # A função retorna a matriz Matriz_Dados_Desempenho.
     return Matriz_Dados_Desempenho
 
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ------ 2) INSTRUÇÃO PARA O PLOTE DOS GRÁFICO DO DADO ESTATÍSTICO DO DESEMPENHO AO LONGO DAS OCUPAÇÕES PARA O JANELAMENTO IDEAL DA ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 --------- ###
+### ----- 2) INSTRUÇÃO PARA O PLOTE DOS GRÁFICO DO DADO ESTATÍSTICO DO DESEMPENHO AO LONGO DAS OCUPAÇÕES PARA O JANELAMENTO IDEAL DA ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------ ###
 
 # Definição da instrução para o plote do gráfico do dado estatístico do desempenho ao longo das ocupações para o janelamento ideal para a estimação da amplitude pelo método BLUE2.
 def grafico_dado_estatistico_desempenho_amplitude_BLUE2(opcao_avaliacao_desempenho, Matriz_Dados_Desempenho):
@@ -112,31 +112,31 @@ def grafico_dado_estatistico_desempenho_amplitude_BLUE2(opcao_avaliacao_desempen
     if opcao_avaliacao_desempenho == 1:
               
         # Comando para o nome do eixo das ordenadas de acordo com o erro médio de estimação.
-        plt.ylabel(r"Média do erro médio de estimação (ADC Count)", fontsize = 18)
+        plt.ylabel(r"Erro médio de estimação (ADC Count)", fontsize = 18)
     
     # Caso a variável opcao_avalicao_desempenho seja 2.
     if opcao_avaliacao_desempenho == 2:
               
         # Comando para o nome do eixo das ordenadas de acordo com o erro médio quadrático.
-        plt.ylabel(r"Média do erro médio quadrático (ADC Count)$^2$", fontsize = 18)
+        plt.ylabel(r"Erro médio quadrático (ADC Count)$^2$", fontsize = 18)
               
     # Caso a variável opcao_avalicao_desempenho seja 3.
     elif opcao_avaliacao_desempenho == 3:
             
         # Comando para o nome do eixo das ordenadas de acordo com o erro médio absoluto.
-        plt.ylabel(r"Média do erro médio absoluto (ADC Count)", fontsize = 18)
+        plt.ylabel(r"Erro médio absoluto (ADC Count)", fontsize = 18)
         
     # Caso a variável dado_estatistico seja 4.
     elif opcao_avaliacao_desempenho == 4:
         
         # Comando para o nome do eixo das ordenadas de acordo com a relação Sinal-Ruído (Signal-to-Noise Ratio - SNR).
-        plt.ylabel(r"Média da relação Sinal-Ruído", fontsize = 18)
+        plt.ylabel(r"Relação Sinal-Ruído", fontsize = 18)
         
     # Caso a variável dado_estatistico seja 5.
     elif opcao_avaliacao_desempenho == 5:
         
         # Comando para o nome do eixo das ordenadas de acordo com a média do desvio padrão.
-        plt.ylabel(r"Média do desvio padrão (ADC Count)", fontsize = 18)
+        plt.ylabel(r"Desvio padrão (ADC Count)", fontsize = 18)
         
     # Comando que define o tamanho dos números do eixo das ordenadas.
     plt.yticks(fontsize = 16)
@@ -150,11 +150,11 @@ def grafico_dado_estatistico_desempenho_amplitude_BLUE2(opcao_avaliacao_desempen
     # Comando para o plote.
     plt.show()
         
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###        
+### --------------------------------------------------------------------------------------------------------------------------------- ###        
         
-### ---------------------------------------------------- 3) INSTRUÇÃO PRINCIPAL DO CÓDIGO (MAIN) -------------------------------------------------- ###
+### --------------------------------------------- 3) INSTRUÇÃO PRINCIPAL DO CÓDIGO -------------------------------------------------- ###
 
-# Definição da instrução principal (main) do código.
+# Definição da instrução principal do código.
 def principal_grafico_dado_estatistico_desempenho_amplitude_BLUE2():
     
     # Impressão de mensagem no terminal.
@@ -201,7 +201,7 @@ def principal_grafico_dado_estatistico_desempenho_amplitude_BLUE2():
     
         # Exibição de uma mensagem de alerta de que a opção solicitada é inválida.
         print("Essa opção é inválida!")
-        print("---------------------------------------------------------------------------------------------------------------------------------------")
+        print("------------------------------------------------------------------------------------------------------------------------")
         # A execução do programa é interrompida.
         exit(1)
           
@@ -217,13 +217,13 @@ def principal_grafico_dado_estatistico_desempenho_amplitude_BLUE2():
     Matriz_Dados_Desempenho = leitura_dados_estatisticos_desempenho_amplitude_BLUE2(parametro, n_janelamento_ideal, mecanismo_desempenho)
     grafico_dado_estatistico_desempenho_amplitude_BLUE2(opcao_avaliacao_desempenho, Matriz_Dados_Desempenho)
 
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
     
 # Chamada da instrução principal do código.
 principal_grafico_dado_estatistico_desempenho_amplitude_BLUE2()
 
 # Impressão de uma linha que representa o fim do programa.
-print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")
+print("\n----------------------------------------------------------------------------------------------------------------------------\n")
     
     
             

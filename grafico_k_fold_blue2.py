@@ -1,6 +1,6 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 02 de setembro de 2024.
+# Data: 14 de novembro de 2024.
 
 # Objetivo do código: construção do gráfico da validação cruzada K-Fold para a estimação da amplitude pelo método BLUE2.
 
@@ -23,7 +23,7 @@ Obs.: esse gráfico mostra a média do dado estatístico (média, variância e d
 Entrada: matriz com os dados da ocupação organizados.
 Saída: nada.
 
-4) Instrução principal (main) do código.
+4) Instrução principal do código.
 Entrada: nada.
 Saída: nada.
 """
@@ -35,7 +35,7 @@ import matplotlib.pyplot as plt
 from termcolor import colored
 
 # Impressão de uma linha que representa o início do programa.
-print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")
+print("\n----------------------------------------------------------------------------------------------------------------------------\n")
 
 # Título do programa.
 
@@ -45,7 +45,7 @@ titulo_programa = colored("Plote do gráfico da validação cruzada K-Fold para 
 # Impressão do título do programa.
 print(titulo_programa)
 
-### -------------------- 1) FUNÇÃO PARA A LEITURA DOS DADOS ESTATÍSTICOS DA VALIDAÇÃO CRUZADA K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------------------------------ ###
+### ----- 1) FUNÇÃO PARA A LEITURA DOS DADOS ESTATÍSTICOS DA VALIDAÇÃO CRUZADA K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ----- ###
 
 # Definição da função para a leitura dos dados estatísticos do K-Fold para a estimação da amplitude pelo método BLUE2.
 def leitura_dados_estatisticos_k_fold_amplitude_BLUE2(parametro, n_ocupacao, dado_estatistico):
@@ -80,9 +80,9 @@ def leitura_dados_estatisticos_k_fold_amplitude_BLUE2(parametro, n_ocupacao, dad
     # A função retorna a matriz Matriz_Dados_K_Fold.
     return Matriz_Dados_K_Fold
 
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ----------------------- 2) INSTRUÇÃO PARA A CONSTRUÇÃO DO GRÁFICO DO TIPO A DA VALIDAÇÃO CRUZADA K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ----------------------------- ###
+### --- 2) INSTRUÇÃO PARA A CONSTRUÇÃO DO GRÁFICO DO TIPO A DA VALIDAÇÃO CRUZADA K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 --- ###
 
 # Definição da instrução para a construção do gráfico tipo A pela validação cruzada K-Fold para a estimação da amplitude pelo método BLUE2.
 def grafico_A_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dados_K_Fold_OC_10, Matriz_Dados_K_Fold_OC_20, Matriz_Dados_K_Fold_OC_30, Matriz_Dados_K_Fold_OC_40, Matriz_Dados_K_Fold_OC_50, Matriz_Dados_K_Fold_OC_60, Matriz_Dados_K_Fold_OC_70, Matriz_Dados_K_Fold_OC_80, Matriz_Dados_K_Fold_OC_90, Matriz_Dados_K_Fold_OC_100):
@@ -112,19 +112,19 @@ def grafico_A_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dad
     if opcao == 1:
         
         # Comando para o nome do eixo das ordenadas.
-        plt.ylabel("Média pelo K-Fold do erro da amplitude (ADC Count)", fontsize = 18)
+        plt.ylabel("Média pelo K-Fold do erro de estimação (ADC Count)", fontsize = 18)
               
     # Caso opcao seja 2.
     elif opcao == 2:
         
         # Comando para o nome do eixo das ordenadas.
-        plt.ylabel("Var. pelo K-Fold do erro da amplitude (ADC Count)", fontsize = 18)
+        plt.ylabel("Var. pelo K-Fold do erro de estimação (ADC Count)", fontsize = 18)
         
     # Caso opcao seja 3.
     elif opcao == 3:
         
         # Comando para o nome do eixo das ordenadas.
-        plt.ylabel("DP. pelo K-Fold do erro da amplitude (ADC Count)", fontsize = 18)
+        plt.ylabel("DP. pelo K-Fold do erro de estimação (ADC Count)", fontsize = 18)
         
     # Armazenamento dos dados referentes a ocupação 0.
     Matriz_Dados_Medias_K_Fold_OC_0 = Matriz_Dados_K_Fold_OC_0[: , indice_coluna_medias]
@@ -187,7 +187,7 @@ def grafico_A_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dad
     plt.grid()
     
     # Ajuste esse limite do eixo vertical de forma que a legenda se encaixe corretamente no gráfico.
-    #plt.ylim(0, 40)
+    plt.ylim(0, 45)
 
     # Comando para a legenda e o posicionamento.
     plt.legend(title = 'Ocupação (OC.)', title_fontproperties = {'weight': 'bold', 'size': 12}, loc = 'upper center', fontsize = 16, ncol = 6)
@@ -195,9 +195,9 @@ def grafico_A_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dad
     # Comando para a exibição do gráfico.
     plt.show()  
     
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ------------------------- 2) INSTRUÇÃO PARA A CONSTRUÇÃO DO GRÁFICO DO TIPO B DA VALIDAÇÃO CRUZADA K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------------ ###
+### ------ 2) INSTRUÇÃO PARA A CONSTRUÇÃO DO GRÁFICO DO TIPO B DA VALIDAÇÃO CRUZADA K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------ ###
 
 # Definição da instrução para a construção do gráfico do tipo B pela validação cruzada K-Fold para a estimação da amplitude pelo método BLUE2.
 def grafico_B_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dados_K_Fold_OC_10, Matriz_Dados_K_Fold_OC_20, Matriz_Dados_K_Fold_OC_30, Matriz_Dados_K_Fold_OC_40, Matriz_Dados_K_Fold_OC_50, Matriz_Dados_K_Fold_OC_60, Matriz_Dados_K_Fold_OC_70, Matriz_Dados_K_Fold_OC_80, Matriz_Dados_K_Fold_OC_90, Matriz_Dados_K_Fold_OC_100):
@@ -224,19 +224,19 @@ def grafico_B_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dad
     if opcao == 1:
         
         # Comando para o nome do eixo das ordenadas.
-        plt.ylabel("Média pelo K-Fold do erro da amplitude (ADC Count)", fontsize = 18)
+        plt.ylabel("Média pelo K-Fold do erro de estimação (ADC Count)", fontsize = 18)
               
     # Caso opcao seja 2.
     elif opcao == 2:
         
         # Comando para o nome do eixo das ordenadas.
-        plt.ylabel("Var. pelo K-Fold do erro da amplitude (ADC Count)", fontsize = 18)
+        plt.ylabel("Var. pelo K-Fold do erro de estimação (ADC Count)", fontsize = 18)
         
     # Caso opcao seja 3.
     elif opcao == 3:
         
         # Comando para o nome do eixo das ordenadas.
-        plt.ylabel("DP. pelo K-Fold do erro da amplitude (ADC Count)", fontsize = 18)
+        plt.ylabel("DP. pelo K-Fold do erro de estimação (ADC Count)", fontsize = 18)
     
     # Definição dos índices para cada um dos janelamentos de acordo com a organização do arquivo de entrada.    
     indice_J7 = 0
@@ -296,11 +296,11 @@ def grafico_B_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dad
     # Comando para a exibição do gráfico.
     plt.show()  
     
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ---------------------------------------------------- 4) INSTRUÇÃO PRINCIPAL DO CÓDIGO (MAIN) ----------------------------------------------- ###
+### ------------------------------------------ 4) INSTRUÇÃO PRINCIPAL DO CÓDIGO ----------------------------------------------------- ###
 
-# Definição da instrução principal (main) do código.
+# Definição da instrução principal do código.
 def principal_grafico_k_fold_amplitude_BLUE2():
     
     # A variável parametro armazena a string "amplitude".
@@ -320,7 +320,7 @@ def principal_grafico_k_fold_amplitude_BLUE2():
         
         # Exibição de uma mensagem de alerta de que o tipo de gráfico solicitado é inválido.
         print("Por favor digite uma tipo válido de gráfico: A ou B!")
-        print("---------------------------------------------------------------------------------------------------------------------------------------")
+        print("------------------------------------------------------------------------------------------------------------------------")
         # A execução do programa é interrompida.
         exit(1)
     
@@ -338,7 +338,7 @@ def principal_grafico_k_fold_amplitude_BLUE2():
     
         # Exibição de uma mensagem de alerta de que a opção solicitada é inválida.
         print("Essa opção é inválida!")
-        print("---------------------------------------------------------------------------------------------------------------------------------------")
+        print("------------------------------------------------------------------------------------------------------------------------")
         # A execução do programa é interrompida.
         exit(1) 
         
@@ -385,13 +385,13 @@ def principal_grafico_k_fold_amplitude_BLUE2():
         # Chamada da função grafico_B_k_fold_BLUE2.
         grafico_B_k_fold_amplitude_BLUE2(opcao, Matriz_Dados_K_Fold_OC_0, Matriz_Dados_K_Fold_OC_10, Matriz_Dados_K_Fold_OC_20, Matriz_Dados_K_Fold_OC_30, Matriz_Dados_K_Fold_OC_40, Matriz_Dados_K_Fold_OC_50, Matriz_Dados_K_Fold_OC_60, Matriz_Dados_K_Fold_OC_70, Matriz_Dados_K_Fold_OC_80, Matriz_Dados_K_Fold_OC_90, Matriz_Dados_K_Fold_OC_100)
     
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
 # Chamada da instrução principal do código.
 principal_grafico_k_fold_amplitude_BLUE2()
 
 # Impressão de uma linha que representa o fim do programa.
-print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")   
+print("\n----------------------------------------------------------------------------------------------------------------------------\n")   
     
     
     

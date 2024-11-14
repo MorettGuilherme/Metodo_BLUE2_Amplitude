@@ -1,6 +1,6 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 02 de setembro de 2024.
+# Data: 14 de novembro de 2024.
 
 # Objetivo do código: análise do erro de estimação da amplitude pelo método BLUE2.
 
@@ -40,7 +40,7 @@ from termcolor import colored
 from metodo_BLUE2 import *
 
 # Impressão de uma linha que representa o início do programa.
-print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")
+print("\n----------------------------------------------------------------------------------------------------------------------------\n")
 
 # Título do programa.
 
@@ -50,7 +50,7 @@ titulo_programa = colored("Análise do erro de estimação da amplitude pelo mé
 # Impressão do título do programa.
 print(titulo_programa)
 
-### ----------------------- 1) FUNÇÃO PARA O CÁLCULO DOS DADOS ESTATÍSTICOS DO ERRO DE ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ---------------------------- ###
+### --------------- 1) FUNÇÃO PARA O CÁLCULO DOS DADOS ESTATÍSTICOS DO ERRO DE ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------- ###
 
 # Definição da função para o cálculo dos dados estatísticos do erro de estimação da amplitude pelo método BLUE2.
 def dados_estatisticos_erro_estimacao_amplitude_BLUE2(lista_erro_estimacao_amplitude):
@@ -70,9 +70,9 @@ def dados_estatisticos_erro_estimacao_amplitude_BLUE2(lista_erro_estimacao_ampli
     # A função retorna a média, a variância e o desvio padrão dos dados do erro de estimação da amplitude.
     return media_erro_estimacao_amplitude, var_erro_estimacao_amplitude, desvio_padrao_erro_estimacao_amplitude
     
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### --------------------------- 2) INSTRUÇÃO PARA A CONSTRUÇÃO DO HISTOGRAMA DO TIPO A DO ERRO DE ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ---------------------------- ###
+### ------ 2) INSTRUÇÃO PARA A CONSTRUÇÃO DO HISTOGRAMA DO TIPO A DO ERRO DE ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 --------------- ###
 
 # Definição de instrução para o plot do histograma do tipo A do erro de estimação da amplitude pelo método BLUE2.
 def histograma_A_erro_estimacao_amplitude_BLUE2(n_ocupacao, lista_erro_estimacao_amplitude, media_erro_estimacao_amplitude, var_erro_estimacao_amplitude, desvio_padrao_erro_estimacao_amplitude):
@@ -134,9 +134,9 @@ def histograma_A_erro_estimacao_amplitude_BLUE2(n_ocupacao, lista_erro_estimacao
     # Exibição do gráfico.
     plt.show()
 
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### ---------- 3) INSTRUÇÃO PARA A CONSTRUÇÃO DO HISTOGRAMA DO TIPO B DO ERRO DE ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------- ###
+### -------- 3) INSTRUÇÃO PARA A CONSTRUÇÃO DO HISTOGRAMA DO TIPO B DO ERRO DE ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------- ###
 
 # Definição de instrução para o plot dos histogramas do tipo B do erro de estimação da amplitude para diferentes janelamentos para uma dada ocupação pelo método BLUE2.
 def histograma_B_erro_estimacao_amplitude_BLUE2(n_ocupacao, lista_erro_estimacao_amplitude_J7, media_erro_estimacao_amplitude_J7, var_erro_estimacao_amplitude_J7, desvio_padrao_erro_estimacao_amplitude_J7, lista_erro_estimacao_amplitude_J15, media_erro_estimacao_amplitude_J15, var_erro_estimacao_amplitude_J15, desvio_padrao_erro_estimacao_amplitude_J15, lista_erro_estimacao_amplitude_J19, media_erro_estimacao_amplitude_J19, var_erro_estimacao_amplitude_J19, desvio_padrao_erro_estimacao_amplitude_J19):
@@ -226,11 +226,11 @@ def histograma_B_erro_estimacao_amplitude_BLUE2(n_ocupacao, lista_erro_estimacao
     # Exibição do gráfico.
     plt.show()
 
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### -------------------------------------- 3) INSTRUÇÃO PRINCIPAL DO CÓDIGO (MAIN) ------------------------------------------------------------- ###
+### -------------------------------- 3) INSTRUÇÃO PRINCIPAL DO CÓDIGO --------------------------------------------------------------- ###
 
-# Definição da instrução principal (main) do código.
+# Definição da instrução principal do código.
 def principal_histograma_erro_estimacao_amplitude_BLUE2():
     
     # A variável n_ocupacao armazena o valor digitado da ocupação desejada no terminal pelo usuário.
@@ -265,7 +265,7 @@ def principal_histograma_erro_estimacao_amplitude_BLUE2():
     
         # Exibição de uma mensagem de alerta de que a opção do tipo de histograma é inválida.
         print("A opção do tipo de histograma digitada é inválida!")
-        print("---------------------------------------------------------------------------------------------------------------------------------------")
+        print("------------------------------------------------------------------------------------------------------------------------")
         # A execução do programa é interrompida.
         exit(1)
     
@@ -283,7 +283,7 @@ def principal_histograma_erro_estimacao_amplitude_BLUE2():
     
             # Exibição de uma mensagem de alerta de que a quantidade de janelamento solicitada é inválida.
             print("Quantidade de janelamento inválida! Opções de janelamento: 7, 9, 11, 13, 15, 17, 19.")
-            print("---------------------------------------------------------------------------------------------------------------------------------------")
+            print("--------------------------------------------------------------------------------------------------------------------")
             # A execução do programa é interrompida.
             exit(1)
             
@@ -349,7 +349,8 @@ def principal_histograma_erro_estimacao_amplitude_BLUE2():
 # Chamada da instrução principal do código.
 principal_histograma_erro_estimacao_amplitude_BLUE2()
 
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 # Impressão de uma linha que representa o fim do programa.
-print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")
+
+print("\n----------------------------------------------------------------------------------------------------------------------------\n")
 

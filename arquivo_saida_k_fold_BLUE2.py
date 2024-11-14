@@ -1,6 +1,6 @@
 # EXPERIMENTO ATLAS - Reconstrução de sinal - Melhor Estimador Linear Não Enviesado - Best Linear Unbiased Estimator (BLUE2) - Estimação da amplitude.
 # Autor: Guilherme Barroso Morett.
-# Data: 02 de setembro de 2024.
+# Data: 14 de novembro de 2024.
 
 # Objetivo do código: implementação da validação cruzada K-Fold para o método BLUE2 para a estimação da amplitude.
 
@@ -36,7 +36,7 @@ from termcolor import colored
 from metodo_BLUE2 import *
 
 # Impressão de uma linha que representa o início do programa.
-print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")
+print("\n----------------------------------------------------------------------------------------------------------------------------\n")
 
 # Título do programa.
 
@@ -46,7 +46,7 @@ titulo_programa = colored("Geração de arquivos de saída pela técnica de vali
 # Impressão do título do programa.
 print(titulo_programa)
 
-### --------------------- 1) INSTRUÇÃO PARA SALVAR OS DADOS ESTATÍSTICOS DO K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------------------------- ###
+### -------- 1) INSTRUÇÃO PARA SALVAR OS DADOS ESTATÍSTICOS DO K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 --------------- ###
 
 # Definição da instrução para salvar as médias dos dados estatísticos da validação cruzada K-Fold em arquivo de saída para a estimação da amplitude pelo método BLUE2.
 def arquivo_saida_dados_estatisticos_k_fold_erro_estimacao_BLUE2(parametro, n_ocupacao, n_janelamento, media_dado_erro_estimacao, var_dado_erro_estimacao, DP_dado_erro_estimacao, dado):
@@ -69,33 +69,51 @@ def arquivo_saida_dados_estatisticos_k_fold_erro_estimacao_BLUE2(parametro, n_oc
     # Caminho completo para o arquivo de saída.
     caminho_arquivo_saida = os.path.join(pasta_saida, arquivo_saida)
 
-    # Verifica se o arquivo existe e está vazio
+    # Comando para tentar realizar uma operação.
     try:
+        
+        # Abre o arquivo presente no endereço caminho_arquivo_saida como a variável arquivo_saida_dados_estatisticos no modo leitura.
         with open(caminho_arquivo_saida, 'r') as arquivo_saida_dados_estatisticos:
+            
+            # A variável primeiro_caractere recebe o primeiro elemento presente no arquivo_saida_dados_estatisticos.
             primeiro_caractere = arquivo_saida_dados_estatisticos.read(1)
+            
+            # Caso não haja nada na variável primeiro_caractere.
             if not primeiro_caractere:
-                # Arquivo está vazio, escreva o título
+                
+                # Abre o arquivo presente no endereço caminho_arquivo_saida como file no modo acrescentar.
                 with open(caminho_arquivo_saida, 'a') as file:
+                    
+                    # Escreve o título no arquivo file.
                     file.write(titulo_arquivo_saida)
+                    
+    # Excessão de erro ao encontrar o arquivo no caminho fornecido.                
     except FileNotFoundError:
-        # Se o arquivo não existe, cria e escreve o título
+        
+        # Abre o arquivo presente no endereço caminho_arquivo_saida como file no modo escrita.
         with open(caminho_arquivo_saida, 'w') as file:
+            
+            # Escreve o título no arquivo file.
             file.write(titulo_arquivo_saida)
 
     # Comando para tentar realizar uma operação.
     try:
-        # Abre o arquivo de saída no modo de acrescentar (append).
+        
+        # Abre o arquivo presente no endereço caminho_arquivo_saida como arquivo_saida_dados_estatisticos no modo acrescentar.
         with open(caminho_arquivo_saida, "a") as arquivo_saida_dados_estatisticos:
-            # Escrita dos dados de interesse.
+            
+            # Escrita dos dados de interesse no arquivo_saida_dados_estatisticos.
             arquivo_saida_dados_estatisticos.write(f"{n_janelamento},{media_dado_erro_estimacao},{var_dado_erro_estimacao},{DP_dado_erro_estimacao}\n")
+   
     # Excessão.
     except Exception as e:
+        
         # Impressão de mensagem de alerta.
         print("Ocorreu um erro ao atualizar o arquivo de saída dos dados estatísticos:", str(e))
 
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
-### --------------------------- 2) INSTRUÇÃO PARA A VALIDAÇÃO CRUZADA K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------------- ###
+### ----------------- 2) INSTRUÇÃO PARA A VALIDAÇÃO CRUZADA K-FOLD PARA A ESTIMAÇÃO DA AMPLITUDE PELO MÉTODO BLUE2 ------------------ ###
 
 # Definição da instrução da técnica de validação cruzada K-Fold para a estimação da amplitude pelo método BLUE2.
 def K_fold_BLUE2(n_ocupacao, n_janelamento, Matriz_Pulsos_Sinais_Janelado, vetor_amplitude_referencia_janelado):
@@ -195,11 +213,11 @@ def K_fold_BLUE2(n_ocupacao, n_janelamento, Matriz_Pulsos_Sinais_Janelado, vetor
     # Salva a informação dos dados estatísticos do desvio padrão do erro de estimação do parâmetro em seus respectivos arquivos de saída.
     arquivo_saida_dados_estatisticos_k_fold_erro_estimacao_BLUE2(parametro, n_ocupacao, n_janelamento, media_DP_blocos_erro_estimacao_amplitude, var_DP_blocos_erro_estimacao_amplitude, DP_DP_blocos_erro_estimacao_amplitude, dado = "DP")
     
-### -------------------------------------------------------------------------------------------------------------------------------------------- ### 
+### --------------------------------------------------------------------------------------------------------------------------------- ### 
 
-### ---------------------------------------------- 3) INSTRUÇÃO PRINCIPAL DO CÓDIGO (MAIN) ----------------------------------------------------- ###
+### ---------------------------------------- 3) INSTRUÇÃO PRINCIPAL DO CÓDIGO ------------------------------------------------------- ###
   
-# Definição da instrução principal (main) do código.
+# Definição da instrução principal do código.
 def principal_K_fold_BLUE2():
     
     # A variável ocupacao_inicial armazena o valor inicial da ocupação que é 0.
@@ -239,8 +257,9 @@ def principal_K_fold_BLUE2():
             K_fold_BLUE2(n_ocupacao, n_janelamento, Matriz_Pulsos_Sinais_Janelado, vetor_amplitude_referencia_janelado)
      
 # Chamada da instrução K_fold_OC.
-principal_K_fold_BLUE2()       
-### -------------------------------------------------------------------------------------------------------------------------------------------- ###
+principal_K_fold_BLUE2()
+       
+### --------------------------------------------------------------------------------------------------------------------------------- ###
 
 # Impressão de uma linha que representa o fim do programa.
-print("\n---------------------------------------------------------------------------------------------------------------------------------------\n")
+print("\n----------------------------------------------------------------------------------------------------------------------------\n")
