@@ -435,6 +435,7 @@ def principal_desempenho_BLUE2():
      
 # Chamada da instrução principal do código.
 principal_desempenho_BLUE2()       
+
 ### --------------------------------------------------------------------------------------------------------------------------------- ###
 
 # Impressão de uma linha que representa o fim do programa.

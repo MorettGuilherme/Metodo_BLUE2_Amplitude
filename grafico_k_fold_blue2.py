@@ -390,6 +390,8 @@ def principal_grafico_k_fold_amplitude_BLUE2():
 # Chamada da instrução principal do código.
 principal_grafico_k_fold_amplitude_BLUE2()
 
+### --------------------------------------------------------------------------------------------------------------------------------- ###
+
 # Impressão de uma linha que representa o fim do programa.
 print("\n----------------------------------------------------------------------------------------------------------------------------\n")   
     

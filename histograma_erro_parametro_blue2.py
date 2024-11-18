@@ -350,7 +350,7 @@ def principal_histograma_erro_estimacao_amplitude_BLUE2():
 principal_histograma_erro_estimacao_amplitude_BLUE2()
 
 ### --------------------------------------------------------------------------------------------------------------------------------- ###
-# Impressão de uma linha que representa o fim do programa.
 
+# Impressão de uma linha que representa o fim do programa.
 print("\n----------------------------------------------------------------------------------------------------------------------------\n")
 

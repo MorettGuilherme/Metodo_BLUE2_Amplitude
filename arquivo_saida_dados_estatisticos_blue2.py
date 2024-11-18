@@ -190,5 +190,7 @@ def principal_arquivo_saida_dados_estatisticos_BLUE2():
 # Chamada da instrução principal do código.
 principal_arquivo_saida_dados_estatisticos_BLUE2()
 
+### --------------------------------------------------------------------------------------------------------------------------------- ###
+
 # Impressão de uma linha que representa o fim do programa.
 print("\n----------------------------------------------------------------------------------------------------------------------------\n")
